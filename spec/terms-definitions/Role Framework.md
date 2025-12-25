@@ -1,3 +1,0 @@
-[[def: Role Framework]]
-
-A framework that defines how an Agent Role structures and manages persistent context: storage/index/pruning of Workload Execution Records, organization of long-term knowledge/preferences, assembly of context for new Agents (Live), and referencing of external systems. It is not a generator; it defines the Role’s sub-workspace structure and read/write contracts, serving as the “contract” making Roles inspectable/composable/certifiable (with embeddedness shaping scope).
