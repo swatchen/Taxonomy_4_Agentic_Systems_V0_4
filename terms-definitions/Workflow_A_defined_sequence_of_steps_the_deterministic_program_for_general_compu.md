@@ -1,5 +1,0 @@
-[[def: Workflow—** A defined sequence of steps: the deterministic program for general compute and that structures how Models, Live Agents, and other components are invoked, including interpreting generated media; and invoking Workspace actuators (for a Non-Agent Workflow).  A Workflow becomes meaningful only when executed within a Workspace, and when executed it becomes a Workload and yields a Workload Execution Record. Agent Workflows must be embedded in other Agent Workflows or Non-Agent Workflows. While Agent Workflows are Workflows, the word Workflow alone within the Taxonomy document preferentially refers only to Non-Agent Workflows, except where the inclusion of Agentflows is obvious.
-
-**Workflow as Framework]]
-
-~A Workflow that acts as Framework specification, because it orchestrates Models/Components, specifies order/decision points, defines Live Agent instantiation/invocation/termination, and encodes deterministic interpretation mapped to Workspace actuators; it is both runnable program (as a Workload) and framework spec for component interaction.
