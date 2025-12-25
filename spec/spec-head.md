@@ -1,7 +1,6 @@
-# Spec-Up-T Demo
+# Taxonomy for Agent Systems
 
 ## Intro
 
-This is a default Spec-Up-T installation. Find information on the [Spec-Up-T documentation website](https://trustoverip.github.io/spec-up-t-website/).
-
-This is a demo site for Spec-Up-T. The subject matter – gardening and related terms – is used purely as an example to demonstrate how the system works. You can replace these demo terms and definitions with your own content to suit your documentation needs.
+This is the accompanying Glossary for Taxonomy for Agent Systems, the full paper can be found at 
+https://docs.google.com/document/d/1a-Rn9V4UgtXs9EYniTAyjvG93QfzzenXfUNK3nW_Sss/edit?usp=sharing
