@@ -1,3 +1,3 @@
 [[def: Supervisor Agent]]
 
-~same as Meta-Agent
+~ ~same as Meta-Agent

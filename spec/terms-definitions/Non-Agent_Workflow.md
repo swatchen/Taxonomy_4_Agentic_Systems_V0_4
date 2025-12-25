@@ -1,3 +1,3 @@
 [[def: Non-Agent Workflow]]
 
-~A Workflow subtype often referred to as just Workflow (vs. Agentflow) that contains the actual execution/orchestration logic: it calls an Agent (Live) to obtain generated media, deterministically interprets that media, and then calls actuators (tools/APIs/etc.) inside a Workspace to perform actions and state changes. It is the “General” role in the Architectural (Safety) Triad, and exists specifically to prevent generated strings from directly calling actions.
+~ ~A Workflow subtype often referred to as just Workflow (vs. Agentflow) that contains the actual execution/orchestration logic: it calls an Agent (Live) to obtain generated media, deterministically interprets that media, and then calls actuators (tools/APIs/etc.) inside a Workspace to perform actions and state changes. It is the “General” role in the Architectural (Safety) Triad, and exists specifically to prevent generated strings from directly calling actions.
