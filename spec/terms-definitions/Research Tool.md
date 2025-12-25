@@ -1,0 +1,3 @@
+[[def: Research Tool]]
+
+~A tool that a Live Agent may have access to within its own Agentflow, without sufficient ability to effect state to be considered an Actuator; i.e., it must preserve the generation-only/oracle constraint (the agent still outputs only generated media). Information gathering calls outside of the defined Workspace are not allowed within an Agentflow, as they could be interpreted as commands by conspiratorial systems. (A web Search cannot be executed within an Agent, and must be executed by a Non-Agent Workflow) whereas a query of a knowledge base within the Workspace can be scripted directly within an Agent) 
