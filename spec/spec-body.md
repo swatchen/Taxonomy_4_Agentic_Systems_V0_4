@@ -1,10 +1,10 @@
-**Taxonomy for Agent Systems (T4AS, “tee-four-az”)**
+## **Taxonomy for Agent Systems (T4AS, “tee-four-az”)**
 
 [**stephen.vitka@gmail.com**](mailto:stephen.vitka@gmail.com)                                                **V0.4              December’ 25**
 
 [LINK TO ALPHABETICAL GLOSSARY OF TERMS](https://docs.google.com/document/u/0/d/1XdtjufFsNzajeBm_FoXoZFNK9YAl23N4aDP16AbXuWg/edit)
 
----
+
 
 ## **Abstract**
 
@@ -14,7 +14,7 @@ In this taxonomy, the term **Agent** is equated with a **Live Agent**. A Live Ag
 
 T4AS is intentionally descriptive rather than prescriptive: it defines the universal parts of any agentic system, independently of execution environment or design philosophy. Recommended implementations are provided after the taxonomy itself. While users, product teams, and public discourse will inevitably continue to use the word “agent” imprecisely, **system architects and developers should adopt precise use of the T4AS vocabulary** to ensure that agentic systems remain understandable, composable, auditable, and safe.
 
-## 
+
 
 ## **Core Definitions in This Taxonomy**
 
@@ -38,7 +38,7 @@ T4AS is intentionally descriptive rather than prescriptive: it defines the unive
 
   The storehouse and management layer for persistent perspectives that can be instantiated as Agents (Live). An Agent Role’s functions are split between one or more workflows. An Agent Role is defined as the sub-workspace where workflows relevant to that Role run, and where Workload Execution Records are accumulated. It does not have its own perspective; instead, it is an addressable reservoir of context that can be assembled into temporary perspectives for immediate tasks. The Agent Role provides the illusion of a continuous, persistent Agent to the user, even if the underlying Live Agents are ephemeral.
 
-## **1\. Introduction & Rationale** 
+## **1. Introduction & Rationale** 
 
 ## **([extended version](https://docs.google.com/document/d/1QARklBNiZmVX1twwjsbZMvqjpj4JInS2Fe9F0QujaN4/edit?usp=sharing) & [“fun” metaphor](https://docs.google.com/document/u/0/d/1Q3kFmnFw8r_5F_SCvNPy9OdWpYceDxUANMqaYN1lURo/edit))**
 
@@ -74,7 +74,7 @@ This document outlines a proposed set of definitions to bring clarity and precis
 
 ## 
 
-## **2\. Primitives in Depth**
+## **2. Primitives in Depth**
 
 ### **2.1 Model**
 
