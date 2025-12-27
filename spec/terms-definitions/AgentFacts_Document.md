@@ -1,3 +1,0 @@
-[[def: AgentFacts Document]]
-
-~ ~A cryptographically signed Verifiable Credential that serves as the authoritative “passport” or “nutrition label” for an Agentflow (Agent Workflow definition). An AgentFacts Document attests to the Agentflow’s composition (e.g., hashes of base workflows and models), embeddedness constraints, and certifications, enabling automated trust evaluation, composability, and policy decisions across distributed T4AS-compliant systems.
