@@ -1,3 +1,0 @@
-[[def: Certification Scope]]
-
-~The notion that what can be certified “globally” vs “only in context” depends on embeddedness: low-embeddedness artifacts can often be certified once and reused; high-embeddedness artifacts often must be certified together with the Roles/Workflows/Workspaces embedding them.
