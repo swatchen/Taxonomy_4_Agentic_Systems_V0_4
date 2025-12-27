@@ -72,7 +72,7 @@ To move from this state of unstructured complexity to disciplined engineering, a
 
 This document outlines a proposed set of definitions to bring clarity and precision to the architecture of modern agentic systems, establishing the common ground necessary for a mature and secure engineering discipline to emerge.
 
-## 
+
 
 ## **2. Primitives in Depth**
 
@@ -122,13 +122,13 @@ A Workflow does not “think.” It **orchestrates**: coordinating generative co
 
 **2.3.1 Sub-Types of Workflows**
 
-* #### **Deterministic Workflows**—These Workflows contain no generative components. Their behavior is fully predictable: given the same inputs, they always produce the same outputs. Deterministic Workflows often serve as interpreters, validators, evaluators, or action-executors within the Workspace.
+*  **Deterministic Workflows**—These Workflows contain no generative components. Their behavior is fully predictable: given the same inputs, they always produce the same outputs. Deterministic Workflows often serve as interpreters, validators, evaluators, or action-executors within the Workspace.
 
-* #### **Agent Workflows (Agentflows)—**These Workflows define the behavior of a Live Agent. Their distinguishing characteristic is that they are **output-only**: they may generate media, call other generative components, or manage an internal perspective, but they cannot perform actions. Executing an Agent Workflow creates a Live Agent.
+*  **Agent Workflows (Agentflows)—**These Workflows define the behavior of a Live Agent. Their distinguishing characteristic is that they are **output-only**: they may generate media, call other generative components, or manage an internal perspective, but they cannot perform actions. Executing an Agent Workflow creates a Live Agent.
 
-* #### **Composite Workflows—** A Workflow that invokes other Workflows—deterministic, generative, or both—as part of its operation. Composite Workflows are the basis for hierarchical or multi-stage processes, including orchestrators that coordinate multiple Live Agents.
+*  **Composite Workflows—** A Workflow that invokes other Workflows—deterministic, generative, or both—as part of its operation. Composite Workflows are the basis for hierarchical or multi-stage processes, including orchestrators that coordinate multiple Live Agents.
 
-* #### **Reactive Workflows—**A Workflow  triggered by events rather than direct user or system calls. It may respond to changes in the Workspace, external stimuli, or scheduled triggers. Reactive Workflows can instantiate Live Agents or other Workloads as part of their event handling.
+*  **Reactive Workflows—**A Workflow  triggered by events rather than direct user or system calls. It may respond to changes in the Workspace, external stimuli, or scheduled triggers. Reactive Workflows can instantiate Live Agents or other Workloads as part of their event handling.
 
 ### **2.3.2 Lifecycle of a Workflow**
 
@@ -162,7 +162,7 @@ A Workflow proceeds through three canonical states:
 
 * **Remote Workloads** – A Workload executing in a different Workspace, device, or environment, but still part of the same logical Workflow invocation chain.
 
-### 
+
 
 ### **2.4 Agent (Live)**
 
