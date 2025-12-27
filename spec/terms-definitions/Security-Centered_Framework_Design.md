@@ -1,0 +1,3 @@
+[[def: Security-Centered Framework Design]]
+
+~ The design principle that Frameworks “should be built with security at their core,” including using Object-Capability (OCAP) principles for provenanced internal calls and keeping capability boundaries aligned to the Architectural Triad (generation in Agents (Live), interpretation in Non-Agent Workflows, execution in Workspace actuators), creating internal “firewalls” even within a single Agent/Role.
