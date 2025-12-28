@@ -370,9 +370,9 @@ In this pattern, **trust** lives in:
 
 not in the opaque internal state of a Model or Live Agent. This is the central security promise of T4AS: **Agent creativity is always separated from the power to act.**
 
-## 
 
-## **4\. Architectural Blueprints: Components, Frameworks and “Embeddedness”**
+
+## **4. Architectural Blueprints: Components, Frameworks and “Embeddedness”**
 
 Agents (Live), Workflows, and Agent Roles are constructed from smaller, reusable parts (**Components**) according to specific architectural plans (**Frameworks**). Components give us **atomic, certifiable building blocks**; frameworks describe **how those blocks are wired together** inside Workflows, Live Agents, and Roles.
 
@@ -406,71 +406,69 @@ What *doesn’t* change is the security boundary: a Component is never trusted s
 
 A **Framework** is a recipe or architecture for composing heterogeneous Components into a larger system. It describes:
 
-* which Components are used,
+- which Components are used,
 
-* how they are connected,
+- how they are connected,
 
-* which data and capabilities flow between them,
+- which data and capabilities flow between them,
 
-* and which **Workflows** and **Agent Roles** they serve.
+- and which **Workflows** and **Agent Roles** they serve.
 
 T4AS distinguishes several important sub-types.
 
-#### 
+
 
 #### **4.2.1 Workflow as Framework**
 
 A Workflow’s definition can be viewed as a **Framework** that orchestrates Models and Components in a sequence (or more complex control structure):
 
-* It specifies the **order** of operations and decision points.
+- It specifies the **order** of operations and decision points.
 
-* It defines how **Live Agents** are instantiated, invoked, and terminated.
+- It defines how **Live Agents** are instantiated, invoked, and terminated.
 
-* It encodes the **deterministic interpretation** of generated media and maps that interpretation to Workspace actuators.
+- It encodes the **deterministic interpretation** of generated media and maps that interpretation to Workspace actuators.
 
 In this sense, a Workflow is both:
 
-* a **runnable program** (when executed as a Workload), and
+- a **runnable program** (when executed as a Workload), and
 
-* a **framework specification** for how its Components must interact.
+- a **framework specification** for how its Components must interact.
 
 The extent to which a Workflow can be reused or globally certified often depends on its embeddedness in particular Roles and Workspaces (see Section 3.3).
 
-#### 
 
-#### 
 
 #### **4.2.2 Agent Workflow (as Framework)**
 
 An **Agent Workflow** defines the core architecture and purpose of a specific class of **Agent (Live)** in its **pre-execution** form.
 
-* It contains the deterministic logic that governs the Agent’s operation and how it utilizes its other Components. **But those components are not specified by the framework.**
+- It contains the deterministic logic that governs the Agent’s operation and how it utilizes its other Components. **But those components are not specified by the framework.**
 
-* It describes *how* an Agent’s perspective is constructed and updated during a run, without binding to any particular Model, toolset, or datastore.
+- It describes *how* an Agent’s perspective is constructed and updated during a run, without binding to any particular Model, toolset, or datastore.
 
-* It establishes the internal structure of prompts, tools for *reading* data, and any internal evaluation or self-critique loops that remain within the generation-only boundary.
+- It establishes the internal structure of prompts, tools for *reading* data, and any internal evaluation or self-critique loops that remain within the generation-only boundary.
 
 In other words, the Agent Workflow is an **abstract pattern**. It defines:
 
-* the **control flow** of an Agent (Live),
+- the **control flow** of an Agent (Live),
 
-* the **interfaces** that Components must implement,
+- the **interfaces** that Components must implement,
 
-* and the **constraints** under which those Components may be used,
+- and the **constraints** under which those Components may be used,
 
 while remaining agnostic about **which** concrete Components are actually chosen. Those concrete Components (specific Models, readers, critics, etc.) are supplied later by:
 
-* Non-Agent Workflows that instantiate the Agent, and
+- Non-Agent Workflows that instantiate the Agent, and
 
-* the Agent Role / Role Framework that assembles context and configuration.
+- the Agent Role / Role Framework that assembles context and configuration.
 
 Crucially, an Agent Workflow:
 
-* **never** contains actuators that can directly change Workspace state,
+- **never** contains actuators that can directly change Workspace state,
 
-* preserves the generation-only nature of Agents (Live), and
+- preserves the generation-only nature of Agents (Live), and
 
-* is built to be reusable: many different Live Agents can be instantiated from the same Agent Workflow with different Components, Workspaces, and Agent Roles.
+- is built to be reusable: many different Live Agents can be instantiated from the same Agent Workflow with different Components, Workspaces, and Agent Roles.
 
 From a certification standpoint, an Agent Workflow is a **key certifiable Component**—usually with relatively high required embeddedness, because it should be tightly coupled to particular Roles and Workspaces (see Section 3.3). Once verified, any Live Agent instantiated from a conforming implementation can inherit those guarantees, as long as the surrounding Workflows and Workspace respect the T4AS triad.
 
