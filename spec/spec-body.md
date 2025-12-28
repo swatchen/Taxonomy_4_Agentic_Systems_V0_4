@@ -837,11 +837,11 @@ Workspaces also determine what an Agent it is executing (or the model(s) it cont
 
 A retrieval-augmented generation (RAG) pattern is a good example of a bounded discovery surface. 
 
-* A typical RAG Agentflow:  
-*  receives a user query or upstream event;  
-* uses Workspace actuators such as vector indexes or document search APIs to retrieve relevant material;  
-* constructs a limited context window from those results; and  
-*  passes that curated context and the question into a Live Agent’s model, which generates an answer over that slice of the world.
+A typical RAG Agentflow:  
+- receives a user query or upstream event;  
+- uses Workspace actuators such as vector indexes or document search APIs to retrieve relevant material;  
+- constructs a limited context window from those results; and  
+- passes that curated context and the question into a Live Agent’s model, which generates an answer over that slice of the world.
 
 A model never roams the corpus by itself. The Workspace determines which corpora exist, which are visible to this Role, and which retrieval mechanisms are available at all. The Agentflow determines which retrieval strategy to run, query vectors to issue, and what results are admissible. When a particular RAG configuration becomes essential for a Role’s correct behavior, that reliance is part of the Role’s embeddedness: the Role now depends on specific indexes, datasets, or connectors being present and behaving as expected.
 
@@ -956,18 +956,18 @@ A Multi-Workspace System consists of two or more distinct Workspaces designed to
 
 **In a Multi-Workspace System:**
 
-* each Workspace preserves its own capability surface and Workload Execution Records,  
-* Non-Agent Workflows define what information and capabilities may cross between Workspaces (and under which policies),  
-* Agent Roles may be partitioned across Workspaces (for example, one Role per domain) or mirrored/paired by design.
+- each Workspace preserves its own capability surface and Workload Execution Records,  
+- Non-Agent Workflows define what information and capabilities may cross between Workspaces (and under which policies),  
+- Agent Roles may be partitioned across Workspaces (for example, one Role per domain) or mirrored/paired by design.
 
 Some architectures combine these ideas: a private Workspace runs a Multi-Role / Multi-Agent layout for a user’s internal Virtual Assistant and nested Roles, while a public “Digital Twin” Workspace exposes only a thin, representative subset of Roles and capabilities.
 
 T4AS remains agnostic about specific wiring patterns (message queues, registries, identity layers). What matters is that:
 
-* each Workspace maintains its own trust boundary and audit trail, and  
-* Multi-Agent layouts are explicitly described as “many Roles and many Live Agents per Workspace,” rather than collapsing everything into a single, undifferentiated agent soup.
+- each Workspace maintains its own trust boundary and audit trail, and  
+- Multi-Agent layouts are explicitly described as “many Roles and many Live Agents per Workspace,” rather than collapsing everything into a single, undifferentiated agent soup.
 
-## 
+
 
 ## **6.4 Distributed Execution and Remote Trust**
 
@@ -977,8 +977,8 @@ In the multi-agent and multi-workspace layouts of Section 6.3, the relationship 
 
 A Generated Sub-Workflow or Generated Sub-Agent is not required to execute in the same Workspace as its parent. A Non-Agent Workflow can:
 
-• instantiate a subordinate Workload in a nested Workspace on the same host, or  
- • delegate that Workload to a remote Workspace that is part of a Multi-Workspace System under another administrative domain.
+- instantiate a subordinate Workload in a nested Workspace on the same host, or  
+- delegate that Workload to a remote Workspace that is part of a Multi-Workspace System under another administrative domain.
 
 In both cases, the subordinate Workload remains subject to the Architectural Triad of the Workspace in which it runs.
 
@@ -990,9 +990,9 @@ When a Workflow asks a remote system to execute a sub-workflow, the interaction 
 
 On the receiving side, the remote host executes the delegated Workload within its own Workspace, often a Sandbox:
 
-• It may leverage its own local Models, data, and Agent Roles.  
- • It monitors resource consumption, actions taken, and any outbound media.  
- • It may inspect, transform, or veto outputs before returning them to the origin Workspace.
+It may leverage its own local Models, data, and Agent Roles.  
+ - It monitors resource consumption, actions taken, and any outbound media.  
+ - It may inspect, transform, or veto outputs before returning them to the origin Workspace.
 
 **The result is a bidirectional trust boundary:**
 
