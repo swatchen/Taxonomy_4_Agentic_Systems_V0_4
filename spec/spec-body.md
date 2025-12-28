@@ -16,7 +16,7 @@ T4AS is intentionally descriptive rather than prescriptive: it defines the unive
 
 ## **Core Definitions in This Taxonomy**
 
-* **Model**
+**Model**
 
    A foundational, often opaque computational block that generates outputs from inputs; typically trained using methods like gradient descent or reinforcement learning. A probabilistic engine that generates multi-media output. *Example: Llama 3 (8B parameters) is a Model.*
 
@@ -198,11 +198,11 @@ An **Agent Role** is the persistent, addressable context that defines an agentic
 
 An Agent Role contains:
 
-* accumulated **Workload Execution Records**,
++ accumulated **Workload Execution Records**,
 
-* structured knowledge bases,
++ structured knowledge bases,
 
-* user preferences and behavior guidelines,
++ user preferences and behavior guidelines,
 
 * long-term goals or objectives,
 
