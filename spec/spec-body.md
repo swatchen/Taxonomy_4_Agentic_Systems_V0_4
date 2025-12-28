@@ -754,41 +754,40 @@ Section 4.3 introduced embeddedness as a property of Components. The same concep
 
 Every Workflow and Live Agent in a T4AS system can be analyzed along an **embeddedness axis**:
 
-* A **low-embeddedness** Workflow or Agent behaves and can be reasoned about largely in terms of its **own logic and local inputs**.
+- A **low-embeddedness** Workflow or Agent behaves and can be reasoned about largely in terms of its **own logic and local inputs**.
 
-* A **high-embeddedness** Workflow or Agent has behavior that is tightly coupled to a particular Role, Workspace, or parent orchestration structure.
+- A **high-embeddedness** Workflow or Agent has behavior that is tightly coupled to a particular Role, Workspace, or parent orchestration structure.
 
 Certification and governance must therefore **match the scope of embeddedness**:
 
-* **Low-embeddedness Workflows and Agents** can sometimes be treated almost like library functions: once their behavior is well understood and constrained, they can be certified and reused in a wide range of systems.
+- **Low-embeddedness Workflows and Agents** can sometimes be treated almost like library functions: once their behavior is well understood and constrained, they can be certified and reused in a wide range of systems.
 
-* **High-embeddedness Workflows and Agents** must typically be certified **together with the Roles, Workspaces, and surrounding orchestration** that embed them.
+- **High-embeddedness Workflows and Agents** must typically be certified **together with the Roles, Workspaces, and surrounding orchestration** that embed them.
 
 In other words, embeddedness determines whether it makes sense to say:
 
-* “This Agent Workflow (and any Agents instantiated by it) are safe wherever it is used,” or
+- “This Agent Workflow (and any Agents instantiated by it) are safe wherever it is used,” or
 
-* “This Agent Workflow is safe **only when embedded in** this particular Role, Workspace, and orchestration pattern.”
+- “This Agent Workflow is safe **only when embedded in** this particular Role, Workspace, and orchestration pattern.”
 
 **Appendix A** will give concrete implementation patterns that respect this distinction—for example, by:
 
-* keeping highly embedded generative workloads short-lived and tightly scoped (Ephemeral Agents), and
+- keeping highly embedded generative workloads short-lived and tightly scoped (Ephemeral Agents), and
 
-* tying long-term certification to **Workload Execution Records**, Agent Roles, and Workspace-level policy, rather than to opaque Live Agents.
+- tying long-term certification to **Workload Execution Records**, Agent Roles, and Workspace-level policy, rather than to opaque Live Agents.
 
 For now, embeddedness is an architectural lens for thinking about **where** certification should attach: to reusable building blocks, to specific assembled systems, or to both.
 
-## 
 
 ## **6\. Execution Workspaces and Trust**
 
 In T4AS, Workflows and Agents (Live) do not run in a vacuum; they execute within Workspaces that define what they can see, what they can do, and how their behavior is audited. Workspaces are where the Architectural Triad becomes concrete:
 
-* **Agent (Live)** as generator of media,
+1. **Agent (Live)** as generator of media,
 
-* **Non-Agent Workflow** as interpreter and controller, and
+2. **Non-Agent Workflow** as interpreter and controller, and
 
-* **Workspace** as executor, actuator host, and recorder.
+3. **Workspace** as executor, actuator host, and recorder.
 
 Workspaces are also where *embeddedness* becomes operational: they are the environments in which Workloads (including Live Agents) are instantiated, constrained, and certified.
 
@@ -796,11 +795,11 @@ Workspaces are also where *embeddedness* becomes operational: they are the envir
 
 A *Workspace* is the execution environment in which Workloads run and state changes occur. A Workspace:
 
-* constrains what Non-Agent Workflows and Live Agents can access and modify,
+- constrains what Non-Agent Workflows and Live Agents can access and modify,
 
-* hosts actuators (tools, APIs, microservices, UI components), and
+- hosts actuators (tools, APIs, microservices, UI components), and
 
-* provides mechanisms for recording actions into Workload Execution Records.
+- provides mechanisms for recording actions into Workload Execution Records.
 
 All user-facing interactions, Agent Roles, and Live Agents reside within one or more Workspaces. A Workspace may be as small as a single-process sandbox dedicated to one task, or as broad as a sovereign, OS-like environment for an entire personal AI stack. Workspaces can nest: a Workflow in one Workspace can instantiate more constrained Workspaces inside it (for example, to run untrusted code or risky transformations).
 
@@ -810,29 +809,29 @@ Within a Workspace, **Agent Roles** can be implemented as structured sub-workspa
 
 A *Sandbox* is a Workspace variant with a very high degree of constraint, used when safety and isolation dominate other concerns. A Sandbox:
 
-* is at minimum a virtualized or containerized environment whose side effects are tightly controlled,
+- is at minimum a virtualized or containerized environment whose side effects are tightly controlled,
 
-* may include internal monitoring Workloads (which may themselves use Agentflows for analysis) that evaluate what is allowed to execute, and
+- may include internal monitoring Workloads (which may themselves use Agentflows for analysis) that evaluate what is allowed to execute, and
 
-* may gate all outbound media, requiring it to pass policy checks before leaving the Sandbox boundary.
+- may gate all outbound media, requiring it to pass policy checks before leaving the Sandbox boundary.
 
 From the outside, a Sandbox is still just a Workspace: Non-Agent Workflows call into it, supply data and limited capabilities, and receive sanitized outputs back. What distinguishes it is the strength of its isolation and the narrowness of its capability surface.
 
----
+
 
 **6.1.2 Agentic / Agential Workspace**
 
 An *Agentic Workspace* (also called an *Agential Workspace*) is a Workspace specifically configured for open-ended operation of one or more Agent Roles and their Live Agents. Its certification focuses on:
 
-* resistance to **agent breakout** (Agents (Live) gaining unintended capabilities),
+- resistance to **agent breakout** (Agents (Live) gaining unintended capabilities),
 
-* resistance to **external break-in** (adversaries compromising the Workspace from outside), and
+- resistance to **external break-in** (adversaries compromising the Workspace from outside), and
 
-* the integrity of recording, indexing, and querying Workload Execution Records used by Agent Roles.
+- the integrity of recording, indexing, and querying Workload Execution Records used by Agent Roles.
 
 Implementation details (such as relying on a hardened kernel, secure enclaves, or specialized hardware) are left to preferred designs in Appendix A. At the taxonomy level, the key property is that the Workspace enforces the Architectural Triad: Live Agents generate media only; Workflows interpret and control; the Workspace and its actuators execute and record.
 
-**6.1.3 DIscovery Reach** 
+**6.1.3 Discovery Reach** 
 
 Workspaces also determine what an Agent it is executing (or the model(s) it contains) can discover about the world. In T4AS, even a Live Agent’s ability to search, browse, or probe is entirely a function of which actuators the Workspace exposes and how its Agentflow is programmed to use them.
 
@@ -848,10 +847,10 @@ A model never roams the corpus by itself. The Workspace determines which corpora
 
 Web search is the same pattern at a larger scale. A web-search agentflow within an agent:
 
-* formulates search queries according to policy (for example, allowed domains, time windows, or languages);  
-* calls a search or fetch actuator from the Workspace;  
-*  filters, normalizes, and perhaps redacts the returned pages; and  
-* only then surfaces selected content into an Agent’s context or onward to another Workflow.
+- formulates search queries according to policy (for example, allowed domains, time windows, or languages);  
+- calls a search or fetch actuator from the Workspace;  
+- filters, normalizes, and perhaps redacts the returned pages; and  
+- only then surfaces selected content into an Agent’s context or onward to another Workflow.
 
 Again, the Agent’s model never holds raw network credentials. It proposes searches and follow-up questions in media; the Agentflow decides which of those proposals to honor, translates them into concrete requests, and decides which responses to trust. The Workspace enforces domain allow-lists and deny-lists, rate limits, and any additional scanning or sandboxing required before a result is considered safe to use.
 
@@ -876,11 +875,11 @@ Embeddedness, introduced earlier as a general property of Components and Framewo
 
 Examples include:
 
-* a **Base Agentflow** or **Base Workflow** definition, certified independently of any particular Workspace,
+- a **Base Agentflow** or **Base Workflow** definition, certified independently of any particular Workspace,
 
-* a **Loaded Agentic Workspace** with a specific knowledge state and Role configuration, and
+- a **Loaded Agentic Workspace** with a specific knowledge state and Role configuration, and
 
-* an **Installed Agentflow** or **Configured Agentic Workspace** deployed for use on a specific host under specific governance rules.
+- an **Installed Agentflow** or **Configured Agentic Workspace** deployed for use on a specific host under specific governance rules.
 
 Certification in this taxonomy attaches to **Agentflows** and **Non-Agent Workflows** at these states, and to their corresponding Workspace configurations. A Live Agent is always an instantiation of some Agentflow in a particular Workspace and inherits its guarantees from the certified Agentflow and environment; individual Live Agent instances are not separate certification targets.
 
@@ -888,18 +887,18 @@ A more detailed catalog—covering, for example, Standard Software Workspaces, S
 
 From the perspective of certification and governance:
 
-* *Base* artifacts are natural targets for broad, low-embeddedness certification.
+- *Base* artifacts are natural targets for broad, low-embeddedness certification.
 
-* *Loaded* configurations often require Role- and Workspace-specific analysis.
+- *Loaded* configurations often require Role- and Workspace-specific analysis.
 
-* *Installed* configurations are the highest-embeddedness state, where guarantees must consider the actual environment and operational context in which Workloads run.
+- *Installed* configurations are the highest-embeddedness state, where guarantees must consider the actual environment and operational context in which Workloads run.
 
 ## **6.3 Multi-Agent and Multi-Workspace Layouts**
 
 Real systems rarely contain a single Live Agent, a single Agent Role, or a single Workspace. T4AS therefore needs language for both:
 
-* layouts where many Roles and many Live Agents share one Workspace, and  
-*  layouts where multiple Workspaces cooperate while preserving distinct trust boundaries.
+- layouts where many Roles and many Live Agents share one Workspace, and  
+- layouts where multiple Workspaces cooperate while preserving distinct trust boundaries.
 
 These patterns are orthogonal: a system can have a Multi-Role / Multi-Agent Workspace inside a larger Multi-Workspace System.
 
@@ -909,10 +908,10 @@ A Multi-Role / Multi-Agent Workspace is a single Workspace that hosts multiple d
 
 **Within the same Workspace, a principal might:**
 
-* converse with a virtual assistant Role,  
-* consult a research-analyst Role,  
-* route outputs through a compliance-checking Role,  
-* and run background monitoring or summarization Roles.
+- converse with a virtual assistant Role,  
+- consult a research-analyst Role,  
+- route outputs through a compliance-checking Role,  
+- and run background monitoring or summarization Roles.
 
 **Each Role:**
 
