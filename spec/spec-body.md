@@ -198,13 +198,13 @@ An **Agent Role** is the persistent, addressable context that defines an agentic
 
 An Agent Role contains:
 
-+ accumulated **Workload Execution Records**,
+- accumulated **Workload Execution Records**,
 
-+ structured knowledge bases,
+-structured knowledge bases,
 
-+ user preferences and behavior guidelines,
++user preferences and behavior guidelines,
 
-* long-term goals or objectives,
+*long-term goals or objectives,
 
 * and any other persistent data that informs how future Live Agents should behave.
 
