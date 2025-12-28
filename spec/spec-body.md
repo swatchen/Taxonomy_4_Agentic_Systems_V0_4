@@ -5,6 +5,8 @@
 *This following Text is not the [current document of record](https://docs.google.com/document/d/1a-Rn9V4UgtXs9EYniTAyjvG93QfzzenXfUNK3nW_Sss/edit?usp=sharing), which is here:
 https://docs.google.com/document/d/1a-Rn9V4UgtXs9EYniTAyjvG93QfzzenXfUNK3nW_Sss/edit?usp=sharing
 
+https://docs.google.com/document/d/1a-Rn9V4UgtXs9EYniTAyjvG93QfzzenXfUNK3nW_Sss/edit?usp=sharing
+
 It does not include the Appendices from that document, either.*
 
 ## **Abstract**
