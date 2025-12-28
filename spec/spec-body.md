@@ -472,27 +472,27 @@ Crucially, an Agent Workflow:
 
 From a certification standpoint, an Agent Workflow is a **key certifiable Component**—usually with relatively high required embeddedness, because it should be tightly coupled to particular Roles and Workspaces (see Section 3.3). Once verified, any Live Agent instantiated from a conforming implementation can inherit those guarantees, as long as the surrounding Workflows and Workspace respect the T4AS triad.
 
-#### 
+
 
 #### **4.2.3 Role Framework**
 
 A **Role Framework** defines how an Agent Role structures and manages its persistent context:
 
-* how **Workload Execution Records** are stored, indexed, and pruned,
+- how **Workload Execution Records** are stored, indexed, and pruned,
 
-* how **long-term knowledge** and preferences are organized,
+- how **long-term knowledge** and preferences are organized,
 
-* how context is **assembled** for new Live Agents (e.g., which histories, which documents, which policies),
+- how context is **assembled** for new Live Agents (e.g., which histories, which documents, which policies),
 
-* and how external systems (registries, identity layers, governance services) may be referenced.
+- and how external systems (registries, identity layers, governance services) may be referenced.
 
 A Role Framework is not itself a generator and does not run as a Live Agent. Instead, it:
 
-* defines the **sub-workspace structure** of the Role,
+- defines the **sub-workspace structure** of the Role,
 
-* specifies which Workflows may read or write which parts of the Role’s context,
+- specifies which Workflows may read or write which parts of the Role’s context,
 
-* and acts as the **contract** that makes Agent Roles inspectable, composable, and certifiable entities in larger systems (again, with embeddedness shaping what can be certified globally versus only in context; see Section 3.3)
+- and acts as the **contract** that makes Agent Roles inspectable, composable, and certifiable entities in larger systems (again, with embeddedness shaping what can be certified globally versus only in context; see Section 3.3)
 
 #### **4.2.3.1 Nested Role Frameworks**
 
@@ -500,15 +500,15 @@ A Role Framework can define not just a single flat sub-workspace, but a **hierar
 
 Structurally:
 
-* The **parent Role** (for example, a person’s long-lived **Digital Twin Role**) defines the broad identity, life-long history, and high-level policy surface for that principal.
+- The **parent Role** (for example, a person’s long-lived **Digital Twin Role**) defines the broad identity, life-long history, and high-level policy surface for that principal.
 
-* One or more **nested Roles** live inside that parent Role’s sub-workspace (for example, a specialized **Tutor Role**, a **Health-Advisor Role**, or a **Financial-Steward Role**). Each:
+- One or more **nested Roles** live inside that parent Role’s sub-workspace (for example, a specialized **Tutor Role**, a **Health-Advisor Role**, or a **Financial-Steward Role**). Each:
 
-  * has its own Role identifier and catalog entry,
+  - has its own Role identifier and catalog entry,
 
-  * maintains its own Workload Execution Records and configuration,
+  - maintains its own Workload Execution Records and configuration,
 
-  * and is governed by a Role Framework that constrains which Workflows and Live Agents may operate “under that hat.”
+  - and is governed by a Role Framework that constrains which Workflows and Live Agents may operate “under that hat.”
 
 The parent Role’s Framework thus becomes a **framework-of-frameworks**: it defines which nested Roles exist, how they share or partition the parent’s data and policies, and how nested Roles may call one another or coordinate within the same principal’s overall identity.
 
