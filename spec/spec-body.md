@@ -1044,9 +1044,9 @@ At the network level, T4AS assumes that each of the following can be named, addr
 
    Every Workflow that may be called remotely—including Agentflows—has a stable identity as a *definition*.
 
-  * A **Workflow ID** refers to a Non-Agent Workflow definition.
+  - A **Workflow ID** refers to a Non-Agent Workflow definition.
 
-  * An **Agentflow ID** refers to the generative specification from which Live Agents are instantiated.
+  - An **Agentflow ID** refers to the generative specification from which Live Agents are instantiated.
 
      Certification, catalogs, discovery, and AgentFacts operate primarily on these **definition-level** identities, not on individual Live Agents, whose trustworthiness derives from the trusted inputs into that Agent.
 
@@ -1054,9 +1054,9 @@ At the network level, T4AS assumes that each of the following can be named, addr
 
    An Agent Role is a persistent storehouse of context and Workload Execution Records associated with a particular perspective.
 
-  * A **Role ID** identifies this long-lived container of state and policy.
+  - A **Role ID** identifies this long-lived container of state and policy.
 
-  * Multiple Live Agents may be instantiated into the same Role over time; they inherit association with the Role ID but are not themselves the anchor of long-term identity.
+  - Multiple Live Agents may be instantiated into the same Role over time; they inherit association with the Role ID but are not themselves the anchor of long-term identity.
 
 * **Live Agent Instance Identity**
 
@@ -1076,17 +1076,17 @@ T4AS assumes, without prescribing specific schemes, that:
 
 * **Human or Organizational Principals**
 
-  * control one or more Agent Roles,
+  - control one or more Agent Roles,
 
-  * administer one or more Workspaces, and
+  - administer one or more Workspaces, and
 
-  * author, curate, or select Workflows and Agentflows (for which Workflow Facts and AgentFacts and certifications may be issued).
+  - author, curate, or select Workflows and Agentflows (for which Workflow Facts and AgentFacts and certifications may be issued).
 
 * **Principal–Role Relationships**
 
-  * A single principal may instantiate many Agent Roles (e.g., “Virtual Assistant,” “Professional Co-worker”, “Content Creation Twin”).
+  - A single principal may instantiate many Agent Roles (e.g., “Virtual Assistant,” “Professional Co-worker”, “Content Creation Twin”).
 
-  * A Role may be shared or delegated under controlled conditions, but remains anchored to one or more principals for accountability.
+  - A Role may be shared or delegated under controlled conditions, but remains anchored to one or more principals for accountability.
 
 The precise identity systems for humans and organizations (e.g., PKI, decentralized identifiers, federated identity providers) are outside the scope of body taxonomy, but are touched on in Appendix A. But, what matters is that there is a consistent way to connect:
 
@@ -1098,27 +1098,27 @@ so that governance, certification, and registry entries (such as AgentFacts) can
 
 Once components have identities, they must be discoverable. **Discovery** is any mechanism that lets a Workflow or human operator locate relevant:
 
-* Workspaces (and the kinds of Workflows they host),
+- Workspaces (and the kinds of Workflows they host),
 
-* Workflows and Agentflows (including versioned definitions),
+- Workflows and Agentflows (including versioned definitions),
 
-* Agent Roles (where appropriate), and
+- Agent Roles (where appropriate), and
 
-* supporting Components such as tools, Models, and policies.
+- supporting Components such as tools, Models, and policies.
 
 Common patterns include:
 
 * **Local Catalogs**
 
-  * Within a single Workspace, a registry of callable Workflows, Agentflows, and tools.
+  - Within a single Workspace, a registry of callable Workflows, Agentflows, and tools.
 
-  * Indexed by function (e.g., “summarization,” “code review”), by certification status, and by applicable Roles.
+  - Indexed by function (e.g., “summarization,” “code review”), by certification status, and by applicable Roles.
 
 * **Network Catalogs / Registries**
 
-  * Shared catalogs that index Workflows, Agentflows, and Workspaces across administrative domains.
+  - Shared catalogs that index Workflows, Agentflows, and Workspaces across administrative domains.
 
-  * Support search by capability, certification level, embedding constraints, or policy tags (e.g., “PII-safe,” “export-restricted”).
+  - Support search by capability, certification level, embedding constraints, or policy tags (e.g., “PII-safe,” “export-restricted”).
 
   * Architectures like the **NANDA quilt registry** fit here: they provide a distributed  registry in which each Agentflow can be represented by an **AgentFact**s Document that summarizes its composition, certifications, and capability profile.
 
@@ -1140,11 +1140,11 @@ T4AS expects that:
 
 * **Workflows consult** those mechanisms before delegating work across boundaries, using registry data to decide:
 
-  * whether a remote Workspace is acceptable for a given task,
+  - whether a remote Workspace is acceptable for a given task,
 
-  * whether a particular Agentflow has appropriate certification (for example, via its AgentFacts Document), and
+  - whether a particular Agentflow has appropriate certification (for example, via its AgentFacts Document), and
 
-  * whether embedding constraints (e.g., required Role types, data-sensitivity levels) are compatible.
+  - whether embedding constraints (e.g., required Role types, data-sensitivity levels) are compatible.
 
 Discovery information is descriptive, not authoritative: it informs decisions about delegation, capability grants, and routing, but those decisions are ultimately made by Non-Agent Workflows and governance policies.
 
@@ -1156,9 +1156,9 @@ At the network level, embeddedness, identity, AgentFacts, and certification inte
 
   * Certification records can attach embeddedness constraints to specific Workflow IDs, Agentflow IDs, Workspace IDs, and Role IDs.
 
-  * AgentFacts can describ**e** constraints on an Agentflow, making them visible to discovery and orchestration systems.
+- AgentFacts can describe constraints on an Agentflow, making them visible to discovery and orchestration systems.
 
-* **AgentFacts as passports for Agentflows**
+- AgentFacts as passports for Agentflows
 
   * An AgentFacts Document is the cryptographically signed passport for an Agentflow, summarizing its composition, certifications, capability surface, and embeddedness constraints.
 
@@ -1178,9 +1178,9 @@ At the network level, embeddedness, identity, AgentFacts, and certification inte
 
 By separating *what must have identity* from *how identity is implemented*, T4AS leaves room for multiple concrete identity and discovery systems, while giving them a shared vocabulary for describing which entities they name, how those entities relate, and how they are surfaced for composable, auditable agentic systems. Architectures like the NANDA quilt registry represent one concrete way to instantiate this layer at global scale.
 
----
 
-### **8\. Certification**
+
+### **8. Certification**
 
 #### **8.1 The Core Principle: Atomic and Composable Trust**
 
@@ -1240,31 +1240,31 @@ This hierarchical trust model is built on verifiable interactions:
 
 1. A developer starts with **atomic, certified Components**, for example:
 
-   * a certified Non-Agent Workflow (e.g., a **“Certified PDF-to-Text Parser”** – Certification A), and
+   - a certified Non-Agent Workflow (e.g., a **“Certified PDF-to-Text Parser”** – Certification A), and
 
-   * a certified Agentflow (e.g., a **“Certified Summarizer Agentflow”** – Certification B, possibly described by an AgentFact).
+   - a certified Agentflow (e.g., a **“Certified Summarizer Agentflow”** – Certification B, possibly described by an AgentFact).
 
 2. A new, larger Non-Agent Workflow (e.g., **“Summarize PDF Reports”**) is created to orchestrate these Components:
 
-   * it calls the parser,
+   - it calls the parser,
 
-   * receives its text output, and
+   - receives its text output, and
 
-   * feeds that output to the Summarizer Agentflow (via a Live Agent instance).
+   - feeds that output to the Summarizer Agentflow (via a Live Agent instance).
 
 3. This new, composite Non-Agent Workflow can then receive its own distinct **Certification C**.
 
-   * Certification C attests to the security and reliability of this specific combination.
+   - Certification C attests to the security and reliability of this specific combination.
 
-   * It verifies that the Workflow’s logic correctly and safely interprets the Agentflow’s generated media according to a well-specified interpretation contract.
+   - It verifies that the Workflow’s logic correctly and safely interprets the Agentflow’s generated media according to a well-specified interpretation contract.
 
 For example, Certification C might verify that:
 
-* the Workflow is designed to pass the Summarizer Agentflow’s output only to a specific writeFile Component,
+- the Workflow is designed to pass the Summarizer Agentflow’s output only to a specific writeFile Component,
 
-* the interpreter treats the Summarizer’s output purely as data, not as executable instructions, and
+- the interpreter treats the Summarizer’s output purely as data, not as executable instructions, and
 
-* the Workflow is not vulnerable to misinterpreting malicious text (e.g., “delete all files”) as a command.
+- the Workflow is not vulnerable to misinterpreting malicious text (e.g., “delete all files”) as a command.
 
 In other words, the trust is not in a Live Agent’s “intent,” but in the Orchestrator’s **rigid, auditable interpretation** of the Agent’s outputs.
 
@@ -1272,21 +1272,21 @@ In other words, the trust is not in a Live Agent’s “intent,” but in the Or
 
 This **chain of trust** can be extended indefinitely.
 
-* A high-level **“Quarterly Report Workflow”** (**Certification D**) might call:
+A high-level **“Quarterly Report Workflow”** (**Certification D**) might call:
 
-  * the **“Summarize PDF Reports”** Workflow (**Certification C**), and
+  - the **“Summarize PDF Reports”** Workflow (**Certification C**), and
 
-  * another certified Workflow that handles email distribution (**Certification E**).
+  - another certified Workflow that handles email distribution (**Certification E**).
 
-* Each of these Workflows, in turn, may depend on certified Agentflows, Models, and Workspace Components, each with their own certifications and (optionally) registry entries such as AgentFacts pointers.
+Each of these Workflows, in turn, may depend on certified Agentflows, Models, and Workspace Components, each with their own certifications and (optionally) registry entries such as AgentFacts pointers.
 
 Because each Component and composition can be certified in isolation and then reused, organizations can:
 
-* reason about **embeddedness** (Base / Loaded / Installed states) for each certified artifact,
+- reason about **embeddedness** (Base / Loaded / Installed states) for each certified artifact,
 
-* attach certifications and constraints to stable identities (Workflow IDs, Agentflow IDs, Workspace IDs, Role IDs), and
+- attach certifications and constraints to stable identities (Workflow IDs, Agentflow IDs, Workspace IDs, Role IDs), and
 
-* compose these certified artifacts into larger systems without losing track of where the guarantees come from.
+- compose these certified artifacts into larger systems without losing track of where the guarantees come from.
 
 The result is a robust approach to safety and reliability: complex, distributed agentic systems whose overall trustworthiness is derived from the verifiable trust of their individual certified parts and their certified compositions, rather than from undocumented global assumptions.
 
