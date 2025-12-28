@@ -1,1 +1,1 @@
-
+example text minimized
