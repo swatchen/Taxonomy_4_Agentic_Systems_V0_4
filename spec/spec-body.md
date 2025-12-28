@@ -200,23 +200,24 @@ An Agent Role contains:
 
 - accumulated **Workload Execution Records**,
 
--structured knowledge bases,
+- structured knowledge bases,
 
-+user preferences and behavior guidelines,
+- user preferences and behavior guidelines,
 
-*long-term goals or objectives,
+- long-term goals or objectives,
 
-* and any other persistent data that informs how future Live Agents should behave.
+- and any other persistent data that informs how future Live Agents should behave.
+
 
 Agent Roles support a wide range of Live Agents:
 
-* a single long-lived Live Agent,
+- a single long-lived Live Agent,
 
-* recurring re-instantiations over time (the preferred practice; see later discussion of Ephemeral Agents),
+- recurring re-instantiations over time (the preferred practice; see later discussion of Ephemeral Agents),
 
-* multiple concurrent Live Agents,
+- multiple concurrent Live Agents,
 
-* or any combination thereof.
+- or any combination thereof.
 
 An Agent Role has **no perspective** of its own. It does not think or generate content. Instead, it serves as a repository from which a Workflow can assemble the specific context needed to instantiate a Live Agent for a given task.
 
