@@ -196,7 +196,7 @@ A Model becomes part of an Agent only when loaded and provided with context for 
 
 An **Agent Role** is the persistent, addressable context that defines an agentic identity within a system. Unlike a Live Agent—which is a running generative Workload—an Agent Role does not run, generate media, or execute any behavior. It is a structural entity that stores the long-term information, histories, and configuration that enable multiple Live Agents to appear coherent and continuous over time.
 
-An Agent Role contains:
+**An Agent Role contains:**
 
 - accumulated **Workload Execution Records**,
 
@@ -209,7 +209,7 @@ An Agent Role contains:
 - and any other persistent data that informs how future Live Agents should behave.
 
 
-Agent Roles support a wide range of Live Agents:
+**Agent Roles support a wide range of Live Agents:**
 
 - a single long-lived Live Agent,
 
