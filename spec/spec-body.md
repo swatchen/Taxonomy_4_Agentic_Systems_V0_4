@@ -500,9 +500,9 @@ A Role Framework can define not just a single flat sub-workspace, but a **hierar
 
 Structurally:
 
-- The **parent Role** (for example, a person’s long-lived **Digital Twin Role**) defines the broad identity, life-long history, and high-level policy surface for that principal.
+The **parent Role** (for example, a person’s long-lived **Digital Twin Role**) defines the broad identity, life-long history, and high-level policy surface for that principal.
 
-- One or more **nested Roles** live inside that parent Role’s sub-workspace (for example, a specialized **Tutor Role**, a **Health-Advisor Role**, or a **Financial-Steward Role**). Each:
+One or more **nested Roles** live inside that parent Role’s sub-workspace (for example, a specialized **Tutor Role**, a **Health-Advisor Role**, or a **Financial-Steward Role**). Each:
 
   - has its own Role identifier and catalog entry,
 
@@ -514,15 +514,14 @@ The parent Role’s Framework thus becomes a **framework-of-frameworks**: it def
 
 This is a **high-embeddedness** pattern (see Section 4.3). A nested Role’s behavior and risk profile depend strongly on:
 
-* the **parent Role** whose histories and policies it reads from,
+- the **parent Role** whose histories and policies it reads from,
 
-* the **Workspace** where the larger Digital Twin is installed,
+- the **Workspace** where the larger Digital Twin is installed,
 
-* and the **Workflows** that are allowed to assemble context from the parent into the nested Role’s sub-workspace.
+- and the **Workflows** that are allowed to assemble context from the parent into the nested Role’s sub-workspace.
 
 Certification and governance often need to treat the parent and its nested Roles as a coupled unit, even if each nested Role carries its own catalog entry and versioning.
 
----
 
 #### **Example: Tutor Role nested inside a Digital Twin Role**
 
@@ -530,31 +529,31 @@ Consider a student’s **Digital Twin Role** as the broad, long-lived identity t
 
 The Tutor Role’s Workspace:
 
-* **indexes and re-frames** the parent Role’s Workload Execution Records related to learning a domain,
+- **indexes and re-frames** the parent Role’s Workload Execution Records related to learning a domain,
 
-* extracts patterns in **how this particular student actually learned** various topics—what explanations worked, which examples unblocked them, which practice schedules stuck,
+- extracts patterns in **how this particular student actually learned** various topics—what explanations worked, which examples unblocked them, which practice schedules stuck,
 
-* and encodes policies about acceptable pedagogy, pacing, and assessment for this principal.
+- and encodes policies about acceptable pedagogy, pacing, and assessment for this principal.
 
 When a Workflow instantiates a Live Agent from the Tutor Role, it assembles context that could **pretend to be** “a version of this student who has already mastered the material,” looking back along their own learning trajectory. The resulting Tutor-Agent (a Live Agent tied to the Tutor Role) then:
 
-* proposes teaching plans and explanations that mirror the strategies that worked in the student’s own history,
+- proposes teaching plans and explanations that mirror the strategies that worked in the student’s own history,
 
-* surfaces examples and analogies that previously produced breakthroughs,
+- surfaces examples and analogies that previously produced breakthroughs,
 
-* and adapts its style and pacing to match the student’s recorded preferences and prior success patterns.
+- and adapts its style and pacing to match the student’s recorded preferences and prior success patterns.
 
 From the student’s point of view, this feels like a future, more-knowledgeable version of their Digital Twin “traveling back in time” to teach their earlier self. Architecturally, however, nothing supernatural is happening: the system is simply instantiating a Live Agent from a **highly embedded Tutor Role**, whose Framework is tuned to reuse the parent Digital Twin Role’s histories as a model of “how you, specifically, learned this.”
 
 Because the Tutor Role is nested inside the Digital Twin Role:
 
-* its correctness and safety must often be evaluated **in the context of that particular Digital Twin Framework and Workspace**, and
+- its correctness and safety must often be evaluated **in the context of that particular Digital Twin Framework and Workspace**, and
 
-* certifications and governance policies may need to attach jointly to “Digital Twin Role \+ Tutor Role \+ installed Workspace,” rather than treating the Tutor Role as a globally reusable, low-embeddedness component.
+- certifications and governance policies may need to attach jointly to “Digital Twin Role \+ Tutor Role \+ installed Workspace,” rather than treating the Tutor Role as a globally reusable, low-embeddedness component.
 
 Nested Role Frameworks thus provide a way to factor a complex identity into **role-scoped sub-identities**—each with its own policies and certification surface—while still grounding all of them in a single principal’s Digital Twin and a single installed Workspace.
 
-#### 
+
 
 #### **4.2.4 Security-Centered Framework Design**
 
@@ -564,17 +563,17 @@ Although T4AS is descriptive, **Frameworks should be built with security at thei
 
 * Capability boundaries should remain aligned with the **Architectural Triad**:
 
-  * generation constrained to **Agents (Live)**,
+  - generation constrained to **Agents (Live)**,
 
-  * interpretation constrained to **Non-Agent Workflows**,
+  - interpretation constrained to **Non-Agent Workflows**,
 
-  * execution and state changes constrained to the **Workspace** actuators.
+  - execution and state changes constrained to the **Workspace** actuators.
 
 This creates “firewalls” that enhance security even between Components inside a single Agent or Role. A certified **Agent Workflow** (e.g., a hypothetical *“Public Representative Agent Workflow v2.1”*) is therefore both:
 
-* a **Component** in its own right (subject to certification), and
+- a **Component** in its own right (subject to certification), and
 
-* the blueprint from which many concrete Live Agents can be safely composed and instantiated.
+- the blueprint from which many concrete Live Agents can be safely composed and instantiated.
 
 The appropriate **scope** of such certification depends on the component’s embeddedness (see Section 4.3): Components with  low-embeddedness (few embedding requirements)  allow broad use under a single certification, whereas one with higher embeddedness ones must often be evaluated in the context of particular Roles and Workspaces.
 
@@ -590,52 +589,52 @@ Every Component  in T4AS (including Agent Workflows and Role Frameworks) can be 
 
   * Examples include:
 
-    * a pure deterministic parser Component,
+    - a pure deterministic parser Component,
 
-    * a simple validation Workflow used as a subroutine,
+    - a simple validation Workflow used as a subroutine,
 
-    * or a Model that is always wrapped in the same narrow, well-understood calling pattern.
+    - or a Model that is always wrapped in the same narrow, well-understood calling pattern.
 
   * Such artifacts are natural candidates for **global certification and reuse**: once verified, they can be incorporated into many architectures with minimal additional analysis.
 
 * A **high-embeddedness** artifact has behavior and risk that depend strongly on its **embedding context**:
 
-  * the Agent Role whose data and policies it reads from,
+  - the Agent Role whose data and policies it reads from,
 
-  * the Workspace whose actuators and access controls it relies on,
+  - the Workspace whose actuators and access controls it relies on,
 
-  * or the parent Workflow that constructs its prompts and interprets its outputs.
+  - or the parent Workflow that constructs its prompts and interprets its outputs.
 
-  * For these artifacts, safety and semantics **cannot be evaluated in isolation**; they make sense only as part of a larger architectural assembly.
+  - For these artifacts, safety and semantics **cannot be evaluated in isolation**; they make sense only as part of a larger architectural assembly.
 
 Embeddedness therefore shapes **certification scope**:
 
 * **Low-embeddedness Components and Frameworks** can often be:
 
-  * certified once,
+  - certified once,
 
-  * versioned and catalogued,
+  - versioned and catalogued,
 
-  * and reused across multiple systems with relatively stable guarantees.
+  - and reused across multiple systems with relatively stable guarantees.
 
-*   
+  
 * **High-embeddedness Components and Frameworks** are better treated as **contextual constructions**:
 
-  * they may need to be certified together with the Agent Roles, Workflows, and Workspaces they are embedded in,
+  - they may need to be certified together with the Agent Roles, Workflows, and Workspaces they are embedded in,
 
-  * and their behavior may change meaningfully when that embedding changes, even if their internal logic does not.
+  - and their behavior may change meaningfully when that embedding changes, even if their internal logic does not.
 
 T4AS does **not** prescribe a particular metric or threshold for embeddedness (required embedding).  Instead, it provides:
 
-* a vocabulary for architects and governance bodies to say things like
+- a vocabulary for architects and governance bodies to say things like
 
    “This Role-specific Agent Workflow is highly embedded in Role R and Workspace W; this parser Component has low-embeddedness and can be certified as a reusable library.”
 
-* a conceptual handle for distinguishing:
+- a conceptual handle for distinguishing:
 
-  * Components and Frameworks that can safely carry **global certifications**, from
+  - Components and Frameworks that can safely carry **global certifications**, from
 
-  * those that require **context-specific analysis**.
+  - those that require **context-specific analysis**.
 
 ## **5\. Generated vs. Called Workflows**
 
@@ -647,9 +646,9 @@ In T4AS, Workflows and Agents (Live) rarely operate in isolation. Instead, they 
 
 This distinction matters for **provenance, trust, and composability**. It tells us whether we are dealing with:
 
-* a newly created, tightly coupled **sub-structure** (generated), or
+- a newly created, tightly coupled **sub-structure** (generated), or
 
-* an existing, independently managed **peer or dependency** (called).
+- an existing, independently managed **peer or dependency** (called).
 
 ### **5.1 Generated Workflows and Sub-Agents**
 
@@ -673,17 +672,17 @@ Two common generated sub-structures are:
 
 In both cases, the important taxonomic points are:
 
-* The **definition itself is generated** rather than hand-authored or pre-registered.
+- The **definition itself is generated** rather than hand-authored or pre-registered.
 
-* The resulting Workflow or Live Agent is **structurally subordinate** to the parent; it exists to serve a local purpose within that parent’s overall process.
+- The resulting Workflow or Live Agent is **structurally subordinate** to the parent; it exists to serve a local purpose within that parent’s overall process.
 
-* Systems may attach strong provenance (e.g., signatures, lineage metadata) to these generated artifacts—but the **specific mechanisms** belong in the implementation-focused second part of the paper.
+- Systems may attach strong provenance (e.g., signatures, lineage metadata) to these generated artifacts—but the **specific mechanisms** belong in the implementation-focused second part of the paper.
 
 We can therefore speak about:
 
-* **Generated Sub-Workflows** – new Workflow definitions produced during execution, then run as Workloads.
+- **Generated Sub-Workflows** – new Workflow definitions produced during execution, then run as Workloads.
 
-* **Generated Sub-Agents** – new Agent Workflow definitions plus configuration, instantiated first as Base Agents and then specialized for immediate tasks as full Live Agents.
+- **Generated Sub-Agents** – new Agent Workflow definitions plus configuration, instantiated first as Base Agents and then specialized for immediate tasks as full Live Agents.
 
 The taxonomy intentionally does **not** prescribe how often this should be done or which provenance mechanism must be used—it only distinguishes generated structures from pre-existing ones.
 
@@ -693,25 +692,25 @@ By contrast, **Called Workflows** are pre-existing, independently defined Workfl
 
 Examples include:
 
-* calling a well-known **deterministic Workflow** that checks compliance,
+- calling a well-known **deterministic Workflow** that checks compliance,
 
-* invoking a registered **Agent Workflow** to instantiate a Base Agent for a recurring Role,
+- invoking a registered **Agent Workflow** to instantiate a Base Agent for a recurring Role,
 
-* or sending a request to a Live Agent associated with a particular **Agent Role** in another Workspace.
+- or sending a request to a Live Agent associated with a particular **Agent Role** in another Workspace.
 
 In these cases:
 
-* The **definition** of the Workflow or Agent Workflow existed **before** the current execution.
+- The **definition** of the Workflow or Agent Workflow existed **before** the current execution.
 
-* The parent Workflow treats it as a **peer or library**, not as a generated sub-structure.
+- The parent Workflow treats it as a **peer or library**, not as a generated sub-structure.
 
-* The called Workflow or Agent may be **managed, certified, and versioned independently** (e.g., as part of a shared catalog; often with lower embeddedness than highly Role-specific constructs; see Section 3.3).
+- The called Workflow or Agent may be **managed, certified, and versioned independently** (e.g., as part of a shared catalog; often with lower embeddedness than highly Role-specific constructs; see Section 3.3).
 
 Structurally:
 
-* A **Called Workflow** is an external dependency whose interface is known in advance.
+- A **Called Workflow** is an external dependency whose interface is known in advance.
 
-* A **Called Agent** (Live) is a Live Agent instantiated or addressed via an existing **Agent Workflow \+ Role** combination, rather than synthesized from scratch.
+- A **Called Agent** (Live) is a Live Agent instantiated or addressed via an existing **Agent Workflow \+ Role** combination, rather than synthesized from scratch.
 
 An interaction with an existing Agent is therefore **a call between peers**, not the creation of a sub-agent. The calling Workflow may still impose constraints (what context to supply, how to interpret responses), but it does not own the definition of the Agent itself.
 
@@ -729,19 +728,19 @@ Separating **Generated** from **Called** entities allows T4AS to talk precisely 
 
 In particular, **Generated Sub-Workflows** and **Generated Sub-Agents** tend to be **more embedded**:
 
-* They are often designed for a single parent Workflow’s purpose.
+- They are often designed for a single parent Workflow’s purpose.
 
-* Their effective behavior may depend on the parent’s Role, policies, or Workspace configuration.
+- Their effective behavior may depend on the parent’s Role, policies, or Workspace configuration.
 
-* Certification may need to treat them as part of a **larger embedding** rather than as independent, freestanding artifacts.
+- Certification may need to treat them as part of a **larger embedding** rather than as independent, freestanding artifacts.
 
 By contrast, **Called Workflows** and **Called Agents** are typically **less embedded**:
 
-* Their definitions exist independently of the calling Workflow.
+- Their definitions exist independently of the calling Workflow.
 
-* They can be catalogued, versioned, and certified on their own terms.
+- They can be catalogued, versioned, and certified on their own terms.
 
-* Governance can treat them as reusable building blocks whose behavior is comparatively stable across embeddings.
+- Governance can treat them as reusable building blocks whose behavior is comparatively stable across embeddings.
 
 The taxonomy does not yet prescribe **how** embeddedness must be measured or **which** certification regimes must be used. It simply provides the vocabulary needed to say:
 
