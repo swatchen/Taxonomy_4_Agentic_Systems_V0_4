@@ -2,7 +2,7 @@
 
 [**stephen.vitka@gmail.com**](mailto:stephen.vitka@gmail.com)                                                **V0.4              December’ 25**
 
-*This following Text is not the current document of record, which is here:
+*This following Text is not the  ([current document of record](https://docs.google.com/document/d/1a-Rn9V4UgtXs9EYniTAyjvG93QfzzenXfUNK3nW_Sss/edit?usp=sharing), which is here:
 https://docs.google.com/document/d/1a-Rn9V4UgtXs9EYniTAyjvG93QfzzenXfUNK3nW_Sss/edit?usp=sharing
 
 It does not include the Abstracts from that document, either.*
