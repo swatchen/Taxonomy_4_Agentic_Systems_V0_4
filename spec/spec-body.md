@@ -934,10 +934,10 @@ Some of these layouts are inter-principal, where Roles for different users or or
 
 In many such layouts, designers also want agents to “talk to each other.” In T4AS, these interactions are mediated by Non-Agent Workflows and happen inside a Workspace; they never involve one Live Agent holding a raw network channel to another. A typical pattern is a communication Workflow that:
 
-* receives media from one Agent as a message;  
-* applies whatever structural or policy checks are required;  
-*  forwards that message into another Agent’s context as input; and  
-*  records the exchange into Workload Execution Records associated with the participating Roles.
+- receives media from one Agent as a message;  
+- applies whatever structural or policy checks are required;  
+-  forwards that message into another Agent’s context as input; and  
+-  records the exchange into Workload Execution Records associated with the participating Roles.
 
 These conversations may be unmonitored in the sense that no human is reviewing them in real time, but they should still be recorded and replayable at the Workflow and Workspace level. When communication crosses Workspace or organizational boundaries, it is often implemented by an explicit protocol – for example, an Agent-to-Agent (A2A) messaging fabric. In this taxonomy, an A2A endpoint on the local side is simply another actuator of the Workspace. The Non-Agent Workflow decides when to send, what to send, to which remote Role or endpoint, and how to incorporate any reply. Each such send or receive is a controlled, auditable step; it does not let communicating Agents bypass the Safety Triad. Agents that communicate with no significant deterministic barriers can instead be considered sub-agents within a larger agent rather than “communicating agents”.
 
@@ -946,13 +946,13 @@ These conversations may be unmonitored in the sense that no human is reviewing t
 
 A Multi-Workspace System consists of two or more distinct Workspaces designed to interoperate while preserving their own trust boundaries and logs. Common examples include:
 
-*  a private Workspace hosting secret-domain Roles (for example, a local-first personal AI stack), and a public-facing Workspace hosting aspirational or representative Roles (for example, a Digital Twin that others can address directly)  
-* a peer multi-user system where each Workspace interacts with others with capabilities derived from a distributed trust network
+-  a private Workspace hosting secret-domain Roles (for example, a local-first personal AI stack), and a public-facing Workspace hosting aspirational or representative Roles (for example, a Digital Twin that others can address directly)  
+- a peer multi-user system where each Workspace interacts with others with capabilities derived from a distributed trust network
 
 **These Workspaces may be:**
 
-*  installed and certified together as a bundle (for example, “Private Workspace v3.1 \+ Public Workspace v2.4” as a paired offering), or  
-* independently selected, as long as they speak compatible protocols and capability formats.
+-  installed and certified together as a bundle (for example, “Private Workspace v3.1 \+ Public Workspace v2.4” as a paired offering), or  
+- independently selected, as long as they speak compatible protocols and capability formats.
 
 **In a Multi-Workspace System:**
 
@@ -1016,17 +1016,17 @@ The NANDA Project defines an **AgentFacts Document** as the official, cryptograp
 
 T4AS does not prescribe a specific identity protocol or registry format, but it does specify *which kinds of things* require stable identity if certification, delegation, and auditability are to make sense across system boundaries:
 
-* Workspaces
+- Workspaces
 
-* Workflows (including Agentflows)
+- Workflows (including Agentflows)
 
-* Agent Roles
+- Agent Roles
 
-* Live Agents (as instances bound to Agent Roles and Agentflows)
+- Live Agents (as instances bound to Agent Roles and Agentflows)
 
 The details of concrete identity mechanisms (e.g., DIDs, DNS-style naming, key-based identifiers, and NANDA-style registries) will be discussed in **Appendix A.**
 
-#### 
+
 
 #### **7.1 Identities for Taxonomic Primitives**
 
