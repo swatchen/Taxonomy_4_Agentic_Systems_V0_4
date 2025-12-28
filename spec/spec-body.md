@@ -247,11 +247,9 @@ An Agent Role should be implemented as a distinct sub-workspace containing all d
 
 Agent Roles may themselves be **nested**: a Role’s sub-workspace can contain more specialized, subordinate Roles that share the same principal but enforce narrower responsibilities or perspectives. This taxonomy discusses this architectural pattern of **Nested Agent Roles** in more detail in Section 4.2.3
 
-### 
 
-### 
 
-### **3\. Taxonomy Built for Security \+ Auditability**
+### **3. Taxonomy Built for Security \+ Auditability**
 
 At the heart of T4AS is the **Architectural Triad**:
 
@@ -291,7 +289,7 @@ The Workspace is the **only locus of side effects**. It provides:
 
 Non-Agent Workflows can only act by routing requests through the Workspace; Live Agents cannot act at all.
 
-#### 
+
 
 #### **3.1 How the Triad Yields Security and Auditability**
 
@@ -319,9 +317,7 @@ The Architectural Triad supports security and auditability through three core in
 
    * This enables **post-hoc forensics**, **compliance checks**, and **reputational scoring** for Agent Roles and Workflows.
 
-#### 
 
-#### 
 
 #### **3.2 Role of Agent Roles in the Triad**
 
@@ -339,7 +335,6 @@ From a security standpoint, Agent Roles strengthen the model:
 
 * They provide a natural locus for **policy enforcement**: which Live Agents may be instantiated, with what context, and with what downstream workflows.
 
-#### 
 
 #### **3.3 Analogy: Strategist, General, and Battlefield**
 
@@ -353,9 +348,7 @@ A familiar analogy captures the triad:
 
 The strategist’s ideas may be powerful, but **nothing moves** until the General and the battlefield infrastructure agree on what to do and how to do it. And every order issued on the battlefield is logged for later review.
 
-#### 
 
-#### 
 
 #### **3.4  Example: Cryptographic Signing**
 
