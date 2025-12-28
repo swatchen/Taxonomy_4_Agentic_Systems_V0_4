@@ -636,7 +636,7 @@ T4AS does **not** prescribe a particular metric or threshold for embeddedness (r
 
   - those that require **context-specific analysis**.
 
-## **5\. Generated vs. Called Workflows**
+## **5. Generated vs. Called Workflows**
 
 In T4AS, Workflows and Agents (Live) rarely operate in isolation. Instead, they often **delegate** work to other Workflows and Agents. This delegation happens in two structurally distinct ways:
 
@@ -779,7 +779,7 @@ In other words, embeddedness determines whether it makes sense to say:
 For now, embeddedness is an architectural lens for thinking about **where** certification should attach: to reusable building blocks, to specific assembled systems, or to both.
 
 
-## **6\. Execution Workspaces and Trust**
+## **6. Execution Workspaces and Trust**
 
 In T4AS, Workflows and Agents (Live) do not run in a vacuum; they execute within Workspaces that define what they can see, what they can do, and how their behavior is audited. Workspaces are where the Architectural Triad becomes concrete:
 
