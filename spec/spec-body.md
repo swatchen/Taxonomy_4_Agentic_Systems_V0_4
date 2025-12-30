@@ -42,7 +42,7 @@ T4AS is intentionally descriptive rather than prescriptive: it defines the unive
 
 <h2>1. Introduction & Rationale </h2>
 
-<h2>([extended version](https://docs.google.com/document/d/1QARklBNiZmVX1twwjsbZMvqjpj4JInS2Fe9F0QujaN4/edit?usp=sharing) & [“fun” metaphor](https://docs.google.com/document/u/0/d/1Q3kFmnFw8r_5F_SCvNPy9OdWpYceDxUANMqaYN1lURo/edit))</h2>
+([extended version](https://docs.google.com/document/d/1QARklBNiZmVX1twwjsbZMvqjpj4JInS2Fe9F0QujaN4/edit?usp=sharing) & [“fun” metaphor](https://docs.google.com/document/u/0/d/1Q3kFmnFw8r_5F_SCvNPy9OdWpYceDxUANMqaYN1lURo/edit))
 
 This taxonomy is designed to disambiguate the use of terms for key components of AI Systems. We cannot talk about a thing unless we first delimit what we are talking about. By dividing an AI System into an **Architectural (Safety) Triad**, we allow there to be security layers between these components (e.g., verifying systems and passkeys), and many failure modes to require coincidental failure of all three components.  
 
