@@ -678,16 +678,16 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <!-- file: terms-definitions/Zero_Ambient_Authority.md -->
 
 <!-- file: spec-body.md -->
-<h2>**Taxonomy for Agent Systems (T4AS, “tee-four-az”)**</h2>
+<h2>Taxonomy for Agent Systems (T4AS, “tee-four-az”)</h2>
 <p><a href="mailto:stephen.vitka@gmail.com"><strong>stephen.vitka@gmail.com</strong></a>                                                <strong>V0.4              December’ 25</strong></p>
 <p>*This following Text is not the <a href="https://docs.google.com/document/d/1a-Rn9V4UgtXs9EYniTAyjvG93QfzzenXfUNK3nW_Sss/edit?usp=sharing">current document of record</a>, which is here:
 <a href="https://docs.google.com/document/d/1a-Rn9V4UgtXs9EYniTAyjvG93QfzzenXfUNK3nW_Sss/edit?usp=sharing">https://docs.google.com/document/d/1a-Rn9V4UgtXs9EYniTAyjvG93QfzzenXfUNK3nW_Sss/edit?usp=sharing</a></p>
 <p>It does not include the Appendices from that document, either.*</p>
-<h2>**Abstract**</h2>
+<h2>Abstract</h2>
 <p>This taxonomy establishes a precise and implementation-agnostic vocabulary for describing <em>any</em> agentic system. As agent frameworks proliferate and the term “agent” is used inconsistently across industry, this document isolates the fundamental architectural primitives required for clarity, safety, and interoperability. T4AS begins by delineating five core concepts—<strong>Model, Workspace, Workflow, Agent (Live), and Agent Role</strong>—before presenting recommended implementations such as <strong>Ephemeral Agents</strong>, <strong>Unified Workflow Lifecycle Documents</strong>, and <strong>token-based OCAP</strong> (introduced in a later, implementation-focused Appendix).</p>
 <p>In this taxonomy, the term <strong>Agent</strong> is equated with a <strong>Live Agent</strong>. A Live Agent is any instance of a Workload executing an Agent Workflow that is constrained to generation-only behavior. The persistent “persona” that a user experiences is instead located in an <strong>Agent Role</strong>: a storehouse and management layer for persistent perspectives and histories that can be instantiated as Live Agents, which serve their term in the Role, archive their function, and then die. The Agent Role can do things at the level of system behavior and appears to have agency, but it is the <em>illusion of persistence</em> constructed from many short-lived Live Agents and their Workload Execution Records. Agent Roles do not think; rather, they supply the contextual “slice” from which Live Agents are instantiated, archived, and replaced.</p>
 <p>T4AS is intentionally descriptive rather than prescriptive: it defines the universal parts of any agentic system, independently of execution environment or design philosophy. Recommended implementations are provided after the taxonomy itself. While users, product teams, and public discourse will inevitably continue to use the word “agent” imprecisely, <strong>system architects and developers should adopt precise use of the T4AS vocabulary</strong> to ensure that agentic systems remain understandable, composable, auditable, and safe.</p>
-<h2>**Core Definitions in This Taxonomy**</h2>
+<h2>Core Definitions in This Taxonomy</h2>
 <p><strong>Model</strong></p>
 <p>A foundational, often opaque computational block that generates outputs from inputs; typically trained using methods like gradient descent or reinforcement learning. A probabilistic engine that generates multi-media output. <em>Example: Llama 3 (8B parameters) is a Model.</em></p>
 <ul>
@@ -708,8 +708,8 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <p>The storehouse and management layer for persistent perspectives that can be instantiated as Agents (Live). An Agent Role’s functions are split between one or more workflows. An Agent Role is defined as the sub-workspace where workflows relevant to that Role run, and where Workload Execution Records are accumulated. It does not have its own perspective; instead, it is an addressable reservoir of context that can be assembled into temporary perspectives for immediate tasks. The Agent Role provides the illusion of a continuous, persistent Agent to the user, even if the underlying Live Agents are ephemeral.</p>
 </li>
 </ul>
-<h2>**1. Introduction &amp; Rationale** </h2>
-<h2>**([extended version](https://docs.google.com/document/d/1QARklBNiZmVX1twwjsbZMvqjpj4JInS2Fe9F0QujaN4/edit?usp=sharing) &amp; [“fun” metaphor](https://docs.google.com/document/u/0/d/1Q3kFmnFw8r_5F_SCvNPy9OdWpYceDxUANMqaYN1lURo/edit))**</h2>
+<h2>1. Introduction &amp; Rationale </h2>
+<h2>([extended version](https://docs.google.com/document/d/1QARklBNiZmVX1twwjsbZMvqjpj4JInS2Fe9F0QujaN4/edit?usp=sharing) &amp; [“fun” metaphor](https://docs.google.com/document/u/0/d/1Q3kFmnFw8r_5F_SCvNPy9OdWpYceDxUANMqaYN1lURo/edit))</h2>
 <p>This taxonomy is designed to disambiguate the use of terms for key components of AI Systems. We cannot talk about a thing unless we first delimit what we are talking about. By dividing an AI System into an <strong>Architectural (Safety) Triad</strong>, we allow there to be security layers between these components (e.g., verifying systems and passkeys), and many failure modes to require coincidental failure of all three components.</p>
 <ol>
 <li>
@@ -743,12 +743,12 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>This document outlines a proposed set of definitions to bring clarity and precision to the architecture of modern agentic systems, establishing the common ground necessary for a mature and secure engineering discipline to emerge.</p>
-<h2>**2. Primitives in Depth**</h2>
-<h3>**2.1 Model**</h3>
+<h2>2. Primitives in Depth</h2>
+<h3>2.1 Model</h3>
 <p>A <strong>Model</strong> is the static set of learned parameters—such as weights, biases, token embeddings, and other configuration artifacts—that define a generative function. In its stored form, a Model is inert data and cannot execute or generate anything.</p>
 <p>A <strong>Loaded Model</strong> is a Model whose parameters have been instantiated in memory (e.g., loaded into RAM). Even when loaded, it remains passive: it has no context, no goals, no perspective, and no ability to act.</p>
 <p>A Model becomes part of a Live Agent only when a Workflow injects context into a Loaded Model to perform a specific generative task. This combination—Loaded Model plus contextual input—constitutes the generative core of a Live Agent, but the Model itself is defined as never possessing state or agency.</p>
-<h3>**2.2 Workspace**</h3>
+<h3>2.2 Workspace</h3>
 <p>A <strong>Workspace</strong> is the execution environment in which Workflows run and state changes occur. It is the “place” where computation happens and the sole location where side effects—such as writing files, calling APIs, updating data, or interacting with users—can be performed.</p>
 <p>The Workspace provides all <strong>actuators</strong>: tools, APIs, microservices, UI elements, and any other capability that can alter state. Workflows may call these actuators, but Live Agents cannot. Live Agents may only generate media; they never directly perform actions.</p>
 <p>To ensure this separation, the Workspace enforces the core security triad of T4AS:</p>
@@ -765,7 +765,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </ul>
 <p>A Workspace may contain multiple Workflows, multiple Agent Roles, and any number of Live Agent instantiations, but it is always the final arbiter of capability. No state changes can occur except through its controlled actuators and deterministic logic.</p>
 <p>The Workspace also provides the mechanisms to construct and inject context into Loaded Models, enabling them to become Live Agents for the duration of a task. When the task ends, the Workspace terminates the Live Agent and retains only the resulting Workload Execution Record.</p>
-<h3>**2.3 Workflow**</h3>
+<h3>2.3 Workflow</h3>
 <p>A <strong>Workflow</strong> is a defined sequence of steps describing how computation proceeds. It is the deterministic program that structures how Models, Live Agents, and other components are invoked. A Workflow contains the execution logic of a system: it decides what to do, when to do it, and which components to call.</p>
 <p>A Workflow becomes meaningful only when executed within a Workspace. During execution, a Workflow can:</p>
 <ul>
@@ -801,7 +801,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <p>**Reactive Workflows—**A Workflow  triggered by events rather than direct user or system calls. It may respond to changes in the Workspace, external stimuli, or scheduled triggers. Reactive Workflows can instantiate Live Agents or other Workloads as part of their event handling.</p>
 </li>
 </ul>
-<h3>**2.3.2 Lifecycle of a Workflow**</h3>
+<h3>2.3.2 Lifecycle of a Workflow</h3>
 <p>A Workflow proceeds through three canonical states:</p>
 <ol>
 <li>
@@ -831,7 +831,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <p>An immutable record of the completed run. It contains final outputs, key internal steps, state transitions, and the generative media produced by Live Agents. This record forms the durable history accessible to other Workflows or Agent Roles.</p>
 </li>
 </ol>
-<h3>**2.3.3 Sub-Types of Workloads**</h3>
+<h3>2.3.3 Sub-Types of Workloads</h3>
 <ul>
 <li>
 <p><strong>Agent Workloads (Live Agents)</strong> – A Live Agent is a Workload executing an <strong>Agent Workflow</strong> (see Section 2.4).</p>
@@ -843,7 +843,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <p><strong>Remote Workloads</strong> – A Workload executing in a different Workspace, device, or environment, but still part of the same logical Workflow invocation chain.</p>
 </li>
 </ul>
-<h3>**2.4 Agent (Live)**</h3>
+<h3>2.4 Agent (Live)</h3>
 <p>An <strong>Agent (Live)</strong>—referred to simply as an <em>Agent</em> in this taxonomy—is any Workload executing an <strong>Agent Workflow</strong>, which is a Workflow constrained to generation-only behavior. An Agent produces generated media such as text, code, or structured data, and cannot execute actions or directly alter state. This makes all Agents in this taxonomy “Oracle” Agents, the obviously safer architecture recommended since the beginning by AI Safety researchers. All actions are performed only by Workflows interpreting the Agent’s output within a Workspace.</p>
 <p>A Live Agent is formed when:</p>
 <ol>
@@ -870,11 +870,11 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <p>may be able to evolve future instances through altering its own Workflow logic.</p>
 </li>
 </ul>
-<h4>**Hierarchy and Composition**</h4>
+<h4>Hierarchy and Composition</h4>
 <p>A Live Agent contains embedded generative components, including Models or other Agent Workloads. When invoked, these components function as sub-agents within the Live Agent’s perspective. This allows Agents to be composed hierarchically while preserving the generation-only constraint.</p>
-<h4>**Agent vs. Model**</h4>
+<h4>Agent vs. Model</h4>
 <p>A Model becomes part of an Agent only when loaded and provided with context for a specific task. A Live Agent is therefore not just a Model but a Model plus context plus a running Agent Workflow. The Agent is defined by its process and perspective, not by its parameters alone.</p>
-<h3>**2.5 Agent Role**</h3>
+<h3>2.5 Agent Role</h3>
 <p>An <strong>Agent Role</strong> is the persistent, addressable context that defines an agentic identity within a system. Unlike a Live Agent—which is a running generative Workload—an Agent Role does not run, generate media, or execute any behavior. It is a structural entity that stores the long-term information, histories, and configuration that enable multiple Live Agents to appear coherent and continuous over time.</p>
 <p><strong>An Agent Role contains:</strong></p>
 <ul>
@@ -910,9 +910,9 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>An Agent Role has <strong>no perspective</strong> of its own. It does not think or generate content. Instead, it serves as a repository from which a Workflow can assemble the specific context needed to instantiate a Live Agent for a given task.</p>
-<h4>**Role as Persistent Identity**</h4>
+<h4>Role as Persistent Identity</h4>
 <p>While a Live Agent exists only as long as its Workload is active, an Agent Role provides the continuity of identity across many such instances. It defines how a newly created agent “remembers,” how it presents itself, and how successive ones maintain consistent behavior across time. Multiple Workflows may reference the same Agent Role, allowing it to act as a shared, persistent persona within the system. The world at large will address this identity (utilizing its associated identifiers), treating it as a coherent thing that can be trusted to act within certain boundaries—or not trusted, due to a poor record.</p>
-<h4>**Context Assembly and Reinstantiation**</h4>
+<h4>Context Assembly and Reinstantiation</h4>
 <p>When a Workflow needs generative behavior from an agent, it uses the Agent Role to:</p>
 <ol>
 <li>
@@ -932,10 +932,10 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ol>
 <p>In this way, the Agent Role is the locus of long-term structure, while the Live Agent is the short-term generative process.</p>
-<h4>**Role as Structural Sub-Workspace**</h4>
+<h4>Role as Structural Sub-Workspace</h4>
 <p>An Agent Role should be implemented as a distinct sub-workspace containing all data, workflows, and historical material associated with that Role. The Role also defines access to external systems and which external systems are allowed access and on what terms. This organizational structure ensures clear boundaries between the persistent knowledge of the Role and the transient computation of the Live Agents instantiated from it.</p>
 <p>Agent Roles may themselves be <strong>nested</strong>: a Role’s sub-workspace can contain more specialized, subordinate Roles that share the same principal but enforce narrower responsibilities or perspectives. This taxonomy discusses this architectural pattern of <strong>Nested Agent Roles</strong> in more detail in Section 4.2.3</p>
-<h3>**3. Taxonomy Built for Security \+ Auditability**</h3>
+<h3>3. Taxonomy Built for Security \+ Auditability</h3>
 <p>At the heart of T4AS is the <strong>Architectural Triad</strong>:</p>
 <ol>
 <li>
@@ -979,7 +979,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>Non-Agent Workflows can only act by routing requests through the Workspace; Live Agents cannot act at all.</p>
-<h4>**3.1 How the Triad Yields Security and Auditability**</h4>
+<h4>3.1 How the Triad Yields Security and Auditability</h4>
 <p>The Architectural Triad supports security and auditability through three core invariants:</p>
 <ol>
 <li>
@@ -1022,7 +1022,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </ul>
 </li>
 </ol>
-<h4>**3.2 Role of Agent Roles in the Triad**</h4>
+<h4>3.2 Role of Agent Roles in the Triad</h4>
 <p><strong>Agent Roles</strong> sit <strong>inside the Workspace</strong> as structured sub-workspaces:</p>
 <ul>
 <li>
@@ -1044,7 +1044,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <p>They provide a natural locus for <strong>policy enforcement</strong>: which Live Agents may be instantiated, with what context, and with what downstream workflows.</p>
 </li>
 </ul>
-<h4>**3.3 Analogy: Strategist, General, and Battlefield**</h4>
+<h4>3.3 Analogy: Strategist, General, and Battlefield</h4>
 <p>A familiar analogy captures the triad:</p>
 <ul>
 <li>
@@ -1058,7 +1058,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>The strategist’s ideas may be powerful, but <strong>nothing moves</strong> until the General and the battlefield infrastructure agree on what to do and how to do it. And every order issued on the battlefield is logged for later review.</p>
-<h4>**3.4  Example: Cryptographic Signing**</h4>
+<h4>3.4  Example: Cryptographic Signing</h4>
 <p>A critical example of this separation is <strong>cryptographic signing</strong>:</p>
 <ul>
 <li>
@@ -1084,9 +1084,9 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>not in the opaque internal state of a Model or Live Agent. This is the central security promise of T4AS: <strong>Agent creativity is always separated from the power to act.</strong></p>
-<h2>**4. Architectural Blueprints: Components, Frameworks and “Embeddedness”**</h2>
+<h2>4. Architectural Blueprints: Components, Frameworks and “Embeddedness”</h2>
 <p>Agents (Live), Workflows, and Agent Roles are constructed from smaller, reusable parts (<strong>Components</strong>) according to specific architectural plans (<strong>Frameworks</strong>). Components give us <strong>atomic, certifiable building blocks</strong>; frameworks describe <strong>how those blocks are wired together</strong> inside Workflows, Live Agents, and Roles.</p>
-<h3>**4.1 Component**</h3>
+<h3>4.1 Component</h3>
 <p>A <strong>Component</strong> is a self-contained, reusable, and often certifiable part of a larger system.</p>
 <p>Components can be:</p>
 <ul>
@@ -1117,7 +1117,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>What <em>doesn’t</em> change is the security boundary: a Component is never trusted simply because it is “inside” an Agent. Its capabilities are always mediated by the <strong>Non-Agent Workflows</strong> and the <strong>Workspace</strong> that call it.</p>
-<h3>**4.2 Framework**</h3>
+<h3>4.2 Framework</h3>
 <p>A <strong>Framework</strong> is a recipe or architecture for composing heterogeneous Components into a larger system. It describes:</p>
 <ul>
 <li>
@@ -1134,7 +1134,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>T4AS distinguishes several important sub-types.</p>
-<h4>**4.2.1 Workflow as Framework**</h4>
+<h4>4.2.1 Workflow as Framework</h4>
 <p>A Workflow’s definition can be viewed as a <strong>Framework</strong> that orchestrates Models and Components in a sequence (or more complex control structure):</p>
 <ul>
 <li>
@@ -1157,7 +1157,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>The extent to which a Workflow can be reused or globally certified often depends on its embeddedness in particular Roles and Workspaces (see Section 3.3).</p>
-<h4>**4.2.2 Agent Workflow (as Framework)**</h4>
+<h4>4.2.2 Agent Workflow (as Framework)</h4>
 <p>An <strong>Agent Workflow</strong> defines the core architecture and purpose of a specific class of <strong>Agent (Live)</strong> in its <strong>pre-execution</strong> form.</p>
 <ul>
 <li>
@@ -1204,7 +1204,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>From a certification standpoint, an Agent Workflow is a <strong>key certifiable Component</strong>—usually with relatively high required embeddedness, because it should be tightly coupled to particular Roles and Workspaces (see Section 3.3). Once verified, any Live Agent instantiated from a conforming implementation can inherit those guarantees, as long as the surrounding Workflows and Workspace respect the T4AS triad.</p>
-<h4>**4.2.3 Role Framework**</h4>
+<h4>4.2.3 Role Framework</h4>
 <p>A <strong>Role Framework</strong> defines how an Agent Role structures and manages its persistent context:</p>
 <ul>
 <li>
@@ -1232,7 +1232,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <p>and acts as the <strong>contract</strong> that makes Agent Roles inspectable, composable, and certifiable entities in larger systems (again, with embeddedness shaping what can be certified globally versus only in context; see Section 3.3)</p>
 </li>
 </ul>
-<h4>**4.2.3.1 Nested Role Frameworks**</h4>
+<h4>4.2.3.1 Nested Role Frameworks</h4>
 <p>A Role Framework can define not just a single flat sub-workspace, but a <strong>hierarchy of sub-workspaces</strong> corresponding to <strong>Nested Agent Roles</strong>. In this pattern, one Agent Role’s sub-workspace contains other Agent Roles that share the same principal but embody more specialized perspectives, responsibilities, or governance surfaces. Each nested Role is still a standard Agent Role—persistent, non-generative, and implemented as a sub-workspace—but it is <strong>embedded within</strong> a broader Role Framework.</p>
 <p>Structurally:</p>
 <p>The <strong>parent Role</strong> (for example, a person’s long-lived <strong>Digital Twin Role</strong>) defines the broad identity, life-long history, and high-level policy surface for that principal.</p>
@@ -1262,7 +1262,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>Certification and governance often need to treat the parent and its nested Roles as a coupled unit, even if each nested Role carries its own catalog entry and versioning.</p>
-<h4>**Example: Tutor Role nested inside a Digital Twin Role**</h4>
+<h4>Example: Tutor Role nested inside a Digital Twin Role</h4>
 <p>Consider a student’s <strong>Digital Twin Role</strong> as the broad, long-lived identity that accumulates the student’s comprehensive history: coursework, problem attempts, explanations received, timing and ordering of concepts, and past tutoring sessions. Nested within this Role, the system may define a <strong>Tutor Role</strong> whose sole purpose is to help that same student learn more effectively.</p>
 <p>The Tutor Role’s Workspace:</p>
 <ul>
@@ -1299,7 +1299,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>Nested Role Frameworks thus provide a way to factor a complex identity into <strong>role-scoped sub-identities</strong>—each with its own policies and certification surface—while still grounding all of them in a single principal’s Digital Twin and a single installed Workspace.</p>
-<h4>**4.2.4 Security-Centered Framework Design**</h4>
+<h4>4.2.4 Security-Centered Framework Design</h4>
 <p>Although T4AS is descriptive, <strong>Frameworks should be built with security at their core</strong>. In particular:</p>
 <ul>
 <li>
@@ -1330,7 +1330,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>The appropriate <strong>scope</strong> of such certification depends on the component’s embeddedness (see Section 4.3): Components with  low-embeddedness (few embedding requirements)  allow broad use under a single certification, whereas one with higher embeddedness ones must often be evaluated in the context of particular Roles and Workspaces.</p>
-<h3>**4.3 Embeddedness, the Degree of Context Dependency** </h3>
+<h3>4.3 Embeddedness, the Degree of Context Dependency </h3>
 <p>Every Component  in T4AS (including Agent Workflows and Role Frameworks) can be characterized by its <strong>embeddedness</strong>:</p>
 <p><strong>Embeddedness</strong> is the degree to which a Component or Framework derives its behavior, permissions, or meaning from the <strong>context that contains it</strong>—its Agent Role, Workspace, parent Workflow, or other enclosing structures. It is the degree that a component must be embedded within context to function as properly.</p>
 <ul>
@@ -1423,7 +1423,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </ul>
 </li>
 </ul>
-<h2>**5. Generated vs. Called Workflows**</h2>
+<h2>5. Generated vs. Called Workflows</h2>
 <p>In T4AS, Workflows and Agents (Live) rarely operate in isolation. Instead, they often <strong>delegate</strong> work to other Workflows and Agents. This delegation happens in two structurally distinct ways:</p>
 <ol>
 <li>
@@ -1442,7 +1442,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <p>an existing, independently managed <strong>peer or dependency</strong> (called).</p>
 </li>
 </ul>
-<h3>**5.1 Generated Workflows and Sub-Agents**</h3>
+<h3>5.1 Generated Workflows and Sub-Agents</h3>
 <p><strong>Generated Workflows</strong> are created on the fly by a parent Workflow for a specific purpose. Conceptually, the parent:</p>
 <ol>
 <li>
@@ -1488,7 +1488,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>The taxonomy intentionally does <strong>not</strong> prescribe how often this should be done or which provenance mechanism must be used—it only distinguishes generated structures from pre-existing ones.</p>
-<h3>**5.2 Called Workflows and Called Agents**</h3>
+<h3>5.2 Called Workflows and Called Agents</h3>
 <p>By contrast, <strong>Called Workflows</strong> are pre-existing, independently defined Workflows or Agents that a parent Workflow invokes as external dependencies.</p>
 <p>Examples include:</p>
 <ul>
@@ -1524,7 +1524,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>An interaction with an existing Agent is therefore <strong>a call between peers</strong>, not the creation of a sub-agent. The calling Workflow may still impose constraints (what context to supply, how to interpret responses), but it does not own the definition of the Agent itself.</p>
-<h3>**5.3 Why This Distinction Matters**</h3>
+<h3>5.3 Why This Distinction Matters</h3>
 <p>Separating <strong>Generated</strong> from <strong>Called</strong> entities allows T4AS to talk precisely about:</p>
 <ul>
 <li>
@@ -1567,7 +1567,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <p>The taxonomy does not yet prescribe <strong>how</strong> embeddedness must be measured or <strong>which</strong> certification regimes must be used. It simply provides the vocabulary needed to say:</p>
 <p>“This Workflow is highly embedded in Role R and Workspace W; this other Workflow has low-embeddedness and can be treated as a reusable library component.”</p>
 <p>Subsequent, implementation-focused work (e.g., on Ephemeral Agents, unified lifecycle documents, and token-based Object Capabilities) can then specify concrete patterns for managing highly embedded versus low-embeddedness structures.</p>
-<h3>**5.4 Embeddedness and Certification Scope for Workflows and Agents**</h3>
+<h3>5.4 Embeddedness and Certification Scope for Workflows and Agents</h3>
 <p>Section 4.3 introduced embeddedness as a property of Components. The same concept applies directly to <strong>Workflows</strong> and <strong>Agents (Live)</strong> as <em>executed</em> entities.</p>
 <p>Every Workflow and Live Agent in a T4AS system can be analyzed along an <strong>embeddedness axis</strong>:</p>
 <ul>
@@ -1606,7 +1606,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ul>
 <p>For now, embeddedness is an architectural lens for thinking about <strong>where</strong> certification should attach: to reusable building blocks, to specific assembled systems, or to both.</p>
-<h2>**6. Execution Workspaces and Trust**</h2>
+<h2>6. Execution Workspaces and Trust</h2>
 <p>In T4AS, Workflows and Agents (Live) do not run in a vacuum; they execute within Workspaces that define what they can see, what they can do, and how their behavior is audited. Workspaces are where the Architectural Triad becomes concrete:</p>
 <ol>
 <li>
@@ -1620,7 +1620,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 </ol>
 <p>Workspaces are also where <em>embeddedness</em> becomes operational: they are the environments in which Workloads (including Live Agents) are instantiated, constrained, and certified.</p>
-<h3>**6.1 Types of Workspaces**</h3>
+<h3>6.1 Types of Workspaces</h3>
 <p>A <em>Workspace</em> is the execution environment in which Workloads run and state changes occur. A Workspace:</p>
 <ul>
 <li>
@@ -1688,7 +1688,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 – keep Workspaces narrow, well defined, and revocable;<br>
 – treat search and retrieval actuators as intentionally scoped discovery surfaces; and<br>
 – keep Non-Agent Workflows thick enough that agent outputs are interpreted, checked, and constrained before they ever hit actuators that mutate state.</p>
-<h3>**6.2 Embedded States of Workloads in Workspaces**</h3>
+<h3>6.2 Embedded States of Workloads in Workspaces</h3>
 <p>Embeddedness, introduced earlier as a general property of Components and Frameworks, becomes observable in Workspaces as distinct <em>states of deployment</em>. T4AS distinguishes at least three high-level embedded states that shape how Workloads (including Live Agents) are trusted:</p>
 <ul>
 <li>
@@ -1727,7 +1727,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <p><em>Installed</em> configurations are the highest-embeddedness state, where guarantees must consider the actual environment and operational context in which Workloads run.</p>
 </li>
 </ul>
-<h2>**6.3 Multi-Agent and Multi-Workspace Layouts**</h2>
+<h2>6.3 Multi-Agent and Multi-Workspace Layouts</h2>
 <p>Real systems rarely contain a single Live Agent, a single Agent Role, or a single Workspace. T4AS therefore needs language for both:</p>
 <ul>
 <li>layouts where many Roles and many Live Agents share one Workspace, and</li>
@@ -1786,7 +1786,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <li>each Workspace maintains its own trust boundary and audit trail, and</li>
 <li>Multi-Agent layouts are explicitly described as “many Roles and many Live Agents per Workspace,” rather than collapsing everything into a single, undifferentiated agent soup.</li>
 </ul>
-<h2>**6.4 Distributed Execution and Remote Trust**</h2>
+<h2>6.4 Distributed Execution and Remote Trust</h2>
 <p>In the multi-agent and multi-workspace layouts of Section 6.3, the relationship between a parent Workflow and the Workloads it delegates to is not confined to a single machine or a single Workspace. T4AS treats local and remote delegation uniformly, using the same trust concepts whether delegation happens inside one Workspace or across a Multi-Workspace System.</p>
 <p><strong>Local vs. Remote Execution</strong></p>
 <p>A Generated Sub-Workflow or Generated Sub-Agent is not required to execute in the same Workspace as its parent. A Non-Agent Workflow can:</p>
@@ -1814,7 +1814,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 Concrete interoperability schemes such as tool protocols and Agent-to-Agent messaging systems sit underneath this same structure. A protocol that advertises “tools” to Agents– for example, a Model Context Protocol (MCP) style tool server – is interpreted in T4AS as part of the Workspace: a set of actuators and data resources that Agent and Non-Agent Workflows can call, subject to capability rules. The Live Agent’s model can propose to use a tool in its generated media, but it never opens the connection or invokes the tool directly; that is always the Workflow’s job.</p>
 <p>Likewise, an Agent-to-Agent (A2A) protocol that allows agents in different systems to exchange messages is modeled here as communication between Workloads in distinct Workspaces. An A2A endpoint on the local side is an actuator. When the local Workflow uses it to send a message, it is delegating a subtask to a remote Workspace, which applies its own Safety Triad and its own policies. Identity and authorization move with the message – for example, by passing capability tokens or verifying digital identities – but at no point is a Live Agent treated as having a raw, unmediated channel into another system.</p>
 <p>From a T4AS point of view, these protocols primarily influence operational scope: they can make it easier to attach new tools or new remote partners to a Workspace. For that reason, designs that allow Workflows to discover and attach arbitrary new MCP servers, A2A peers, or similar endpoints at runtime, based solely on agent proposals, should be treated cautiously. They push the system toward the “world as workspace” failure mode described in Section 6.1.4. Disciplined designs instead enumerate which MCP servers, which tool sets, and which A2A peers are in scope for a given Role and Workflow and then certify those assembled configurations.</p>
-<h3>**7. Network-Level Identity and Discovery**</h3>
+<h3>7. Network-Level Identity and Discovery</h3>
 <p>While this taxonomy provides a logical framework for composing agentic systems, the components and Agents (Live) themselves require a mechanism for <strong>network-level identification, discovery, and verification</strong>. Architectures like the <strong>NANDA quilt registry</strong> that points to verifiable <strong>AgentFacts Documents</strong>, provide a concrete example of the infrastructure that can bring this taxonomy to life on a global scale.</p>
 <p>The NANDA Project defines an <strong>AgentFacts Document</strong> as the official, cryptographically signed <em>passport</em> for an <strong>Agentflow</strong>, attesting to its composition, certifications, and capabilities as defined within this extensible framework. AgentFacts are issued for Agentflows, not Live Agents, but AgentFlowFacts would have been too cumbersome even if more correct. Many Live Agents, across many Workspaces and Agent Roles, can share the same Agentflow, and therefore reference the same AgentFacts Document, which can in turn, point to a canonical copy of the AgentFlow.</p>
 <p>T4AS does not prescribe a specific identity protocol or registry format, but it does specify <em>which kinds of things</em> require stable identity if certification, delegation, and auditability are to make sense across system boundaries:</p>
@@ -1833,7 +1833,7 @@ Concrete interoperability schemes such as tool protocols and Agent-to-Agent mess
 </li>
 </ul>
 <p>The details of concrete identity mechanisms (e.g., DIDs, DNS-style naming, key-based identifiers, and NANDA-style registries) will be discussed in <strong>Appendix A.</strong></p>
-<h4>**7.1 Identities for Taxonomic Primitives**</h4>
+<h4>7.1 Identities for Taxonomic Primitives</h4>
 <p>At the network level, T4AS assumes that each of the following can be named, addressed, and referred to in logs, certificates, and registry entries (such as AgentFacts pointers):</p>
 <ul>
 <li>
@@ -1889,7 +1889,7 @@ Concrete interoperability schemes such as tool protocols and Agent-to-Agent mess
 </ul>
 </li>
 </ul>
-<h4>**7.2 Human and Organizational Anchors**</h4>
+<h4>7.2 Human and Organizational Anchors</h4>
 <p>Agent Roles, Workspaces, and Workflows are ultimately anchored to humans and organizations.</p>
 <p>T4AS assumes, without prescribing specific schemes, that:</p>
 <ul>
@@ -1922,7 +1922,7 @@ Concrete interoperability schemes such as tool protocols and Agent-to-Agent mess
 <p>The precise identity systems for humans and organizations (e.g., PKI, decentralized identifiers, federated identity providers) are outside the scope of body taxonomy, but are touched on in Appendix A. But, what matters is that there is a consistent way to connect:</p>
 <p>principal ⟷ Agent Role(s) ⟷ Workflows / Agentflows ⟷ Workspaces</p>
 <p>so that governance, certification, and registry entries (such as AgentFacts) can refer to these relationships explicitly.</p>
-<h4>**7.3 Discovery: Catalogs and Registries**</h4>
+<h4>7.3 Discovery: Catalogs and Registries</h4>
 <p>Once components have identities, they must be discoverable. <strong>Discovery</strong> is any mechanism that lets a Workflow or human operator locate relevant:</p>
 <ul>
 <li>
@@ -1978,7 +1978,7 @@ Concrete interoperability schemes such as tool protocols and Agent-to-Agent mess
 </li>
 </ul>
 <p>Discovery mechanisms can be implemented using many technologies (service registries, distributed ledgers, gossip protocols, static configuration), but they must respect the distinction between definition-level objects (Workflows, Agentflows) and instance-level Workloads (Live Agents inside particular Workspaces).</p>
-<h4>**7.4 Discovery Across Trust Boundaries**</h4>
+<h4>7.4 Discovery Across Trust Boundaries</h4>
 <p>Network-level identity and discovery become most critical at trust boundaries—where one Workspace calls into another under different governance.</p>
 <p>T4AS expects that:</p>
 <ul>
@@ -2001,7 +2001,7 @@ Concrete interoperability schemes such as tool protocols and Agent-to-Agent mess
 </li>
 </ul>
 <p>Discovery information is descriptive, not authoritative: it informs decisions about delegation, capability grants, and routing, but those decisions are ultimately made by Non-Agent Workflows and governance policies.</p>
-<h4>**7.5 Identity, Embeddedness, AgentFacts, and Auditability**</h4>
+<h4>7.5 Identity, Embeddedness, AgentFacts, and Auditability</h4>
 <p>At the network level, embeddedness, identity, AgentFacts, and certification interact in several ways:</p>
 <ul>
 <li>
@@ -2052,8 +2052,8 @@ Concrete interoperability schemes such as tool protocols and Agent-to-Agent mess
 </li>
 </ul>
 <p>By separating <em>what must have identity</em> from <em>how identity is implemented</em>, T4AS leaves room for multiple concrete identity and discovery systems, while giving them a shared vocabulary for describing which entities they name, how those entities relate, and how they are surfaced for composable, auditable agentic systems. Architectures like the NANDA quilt registry represent one concrete way to instantiate this layer at global scale.</p>
-<h3>**8. Certification**</h3>
-<h4>**8.1 The Core Principle: Atomic and Composable Trust**</h4>
+<h3>8. Certification</h3>
+<h4>8.1 The Core Principle: Atomic and Composable Trust</h4>
 <p>The security and reliability of a complex agentic system must be verifiable. This taxonomy enables that through a certification model built on two core principles:</p>
 <ol>
 <li>
@@ -2082,7 +2082,7 @@ Concrete interoperability schemes such as tool protocols and Agent-to-Agent mess
 <p><strong>Trust is Composable and Hierarchical</strong></p>
 <p>The system allows a <strong>chain of trust</strong> to be built by composing certified parts. A developer can construct a new, verifiable entity by assembling existing certified Components and, when appropriate, constraining the embedding of that composition.</p>
 <p>Network-level identity and discovery (Section 7) enable these certified artifacts to be named and looked up (e.g., via AgentFacts for Agentflows), while the certification model defines how their guarantees compose inside and across Workspaces.</p>
-<h4>**8.2 Recursive Agentflow Composition**</h4>
+<h4>8.2 Recursive Agentflow Composition</h4>
 <p>A key strength of this taxonomy is that its core security principle—the strict separation of generation from execution—scales with compositional complexity.</p>
 <p>An <strong>Agentflow</strong> is a stateful, output-constrained generative Workflow definition. It does not matter whether its “generated media” is produced by a single Model or by a complex internal Agentflow graph that calls many other Agentflows as sub-components. As long as the Architectural Triad is maintained, the Generator side can be certified in a uniform way.</p>
 <p>This enables a clear path for verifiable composition:</p>
@@ -2108,7 +2108,7 @@ Concrete interoperability schemes such as tool protocols and Agent-to-Agent mess
 </ol>
 <p>No matter how many layers of Agentflows are nested, the entire construct is, to the outside Workspace, still just a single <strong>Agent (Live)</strong> instantiation of a top-level Agentflow that can do nothing but produce media (often a “plan” or structured request) for Non-Agent Workflows to interpret.</p>
 <p>At the network level, a registry entry—such as a NANDA <strong>AgentFact</strong>—can summarize these certifications and constraints for a given Agentflow ID, making the Generator’s guarantees transparently discoverable.</p>
-<h4>**8.3 Composite Workflows**</h4>
+<h4>8.3 Composite Workflows</h4>
 <p>The same principle of composable trust applies to the <strong>Non-Agent Workflow</strong> (the Orchestrator). Any Workflow can be defined as a reusable Component and independently certified. This allows high-assurance systems to be built by assembling certified “recipes” from other certified parts.</p>
 <p>This hierarchical trust model is built on verifiable interactions:</p>
 <ol>
@@ -2162,7 +2162,7 @@ Concrete interoperability schemes such as tool protocols and Agent-to-Agent mess
 </li>
 </ul>
 <p>In other words, the trust is not in a Live Agent’s “intent,” but in the Orchestrator’s <strong>rigid, auditable interpretation</strong> of the Agent’s outputs.</p>
-<h4>**8.4 The Chain of Trust**</h4>
+<h4>8.4 The Chain of Trust</h4>
 <p>This <strong>chain of trust</strong> can be extended indefinitely.</p>
 <p>A high-level <strong>“Quarterly Report Workflow”</strong> (<strong>Certification D</strong>) might call:</p>
 <ul>
