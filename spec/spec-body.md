@@ -1,4 +1,4 @@
-<h2>Taxonomy for Agent Systems (T4AS, “tee-four-az”)</h2>
+<h1>Taxonomy for Agent Systems (T4AS, “tee-four-az”)</h1>
 
 [**stephen.vitka@gmail.com**](mailto:stephen.vitka@gmail.com)                                                **V0.4              December’ 25**
 
@@ -1296,7 +1296,8 @@ The result is a robust approach to safety and reliability: complex, distributed 
 
 ---
 
-# 
+[Appendix A: Preferred Implementations](https://docs.google.com/document/d/1a-Rn9V4UgtXs9EYniTAyjvG93QfzzenXfUNK3nW_Sss/edit?tab=t.0#bookmark=id.duxpq980eq5c)
 
-# **Appendix A: Preferred Implementations**
+[Appendix B: Taxonomy of Embedded States](https://docs.google.com/document/d/1a-Rn9V4UgtXs9EYniTAyjvG93QfzzenXfUNK3nW_Sss/edit?tab=t.0#bookmark=id.5hz4rvuytuuy)
 
+[Appendix C: Relationship to OWASP’s Agentic AI – Threats and Mitigations and the Multi-Agentic System Guide](https://docs.google.com/document/d/1a-Rn9V4UgtXs9EYniTAyjvG93QfzzenXfUNK3nW_Sss/edit?tab=t.0#bookmark=id.7tsfk46azir2)
